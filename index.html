@@ -579,10 +579,10 @@
       letter-spacing: 0.25em;
     }
 
-    /* GEOGRAPHICALLY CORRECT SILHOUETTE OF BRAZIL */
+    /* GEOGRAPHICALLY CORRECT SILHOUETTE OF BRAZIL (MATCHES REFERENCE PICTURE IN DETAIL) */
     .brazil-border {
       fill: rgba(255, 255, 255, 0.48);
-      stroke: rgba(244, 114, 182, 0.38);
+      stroke: rgba(244, 114, 182, 0.55); /* Highlighted slightly to pop beautifully */
       stroke-width: 2.5;
       stroke-linejoin: round;
       stroke-dasharray: 6 3;
@@ -698,16 +698,16 @@
       filter: drop-shadow(0 8px 15px rgba(225, 29, 72, 0.22));
     }
 
-    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=390, y=530) TO SP (x=480, y=440) */
+    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=425, y=515) TO SP (x=485, y=425) */
     body.state-flying .paper-airplane-container {
-      offset-path: path('M 390 530 C 400 350, 450 350, 480 440');
+      offset-path: path('M 425 515 C 435 340, 465 340, 485 425');
       offset-rotate: auto 75deg;
       animation: flight-trajectory 4.2s cubic-bezier(0.4, 0.05, 0.25, 1) forwards;
     }
 
     body.state-landed .paper-airplane-container {
-      left: 480px;
-      top: 440px;
+      left: 485px;
+      top: 425px;
       transform: scale(1.05) translate(-50%, -50%) rotate(25deg);
       animation: plane-hover-landed 3s ease-in-out infinite;
     }
@@ -1014,27 +1014,27 @@
 
           <!-- GEOGRAPHICALLY ACCURATE BRAZIL OUTLINE -->
           <path class="brazil-border" filter="url(#shadow)" d="
-            M 390 530
-            C 370 510, 350 490, 335 485
-            C 320 480, 310 450, 280 440
-            C 270 435, 290 410, 275 390
-            C 260 370, 230 360, 210 350
-            C 190 340, 155 340, 140 330
-            C 125 320, 130 300, 145 285
-            C 160 270, 135 250, 140 230
-            C 145 210, 175 220, 195 200
-            C 215 180, 240 150, 265 125
-            C 290 100, 320 95, 340 105
-            C 360 115, 385 110, 410 100
-            C 435 90, 455 75, 475 90
-            C 495 105, 530 115, 555 120
-            C 580 125, 605 135, 625 150
-            C 645 165, 665 175, 670 195
-            C 675 215, 665 230, 650 245
-            C 635 260, 620 280, 600 310
-            C 580 340, 560 375, 535 405
-            C 510 435, 480 440, 465 465
-            C 450 490, 420 515, 390 530 Z
+            M 440 550
+            C 410 520, 390 490, 360 480
+            C 345 470, 320 470, 310 440
+            C 300 420, 275 410, 270 380
+            C 265 350, 230 350, 200 340
+            C 170 330, 130 330, 110 300
+            C 100 280, 120 250, 140 240
+            C 150 230, 130 200, 140 180
+            C 150 160, 175 160, 200 160
+            C 220 160, 240 135, 270 110
+            C 290 90, 320 85, 340 100
+            C 350 110, 380 105, 410 95
+            C 430 85, 450 70, 470 85
+            C 490 100, 525 110, 550 115
+            C 575 120, 600 130, 620 145
+            C 640 160, 660 170, 665 190
+            C 670 210, 660 225, 645 240
+            C 630 255, 615 275, 595 305
+            C 575 335, 555 370, 530 400
+            C 505 430, 480 435, 465 460
+            C 450 485, 455 520, 440 550 Z
           " />
 
           <!-- Compass Rose -->
@@ -1056,15 +1056,15 @@
 
           <!-- FLIGHT PATH (TRAJECTORY COMMAND) -->
           <!-- Background guideline path -->
-          <path class="flight-path-bg" d="M 390 530 C 400 350, 450 350, 480 440" />
+          <path class="flight-path-bg" d="M 425 515 C 435 340, 465 340, 485 425" />
           
           <!-- Drawing path activated during flight -->
-          <path id="flight-trail" class="flight-path-active" d="M 390 530 C 400 350, 450 350, 480 440" />
+          <path id="flight-trail" class="flight-path-active" d="M 425 515 C 435 340, 465 340, 485 425" />
 
           <!-- ==================== CITIES AND LABELS ==================== -->
           
           <!-- Porto Alegre - RS (South tip bulge inside Rio Grande do Sul) -->
-          <g class="city-node" transform="translate(390, 530)">
+          <g class="city-node" transform="translate(425, 515)">
             <circle class="city-pulse" cx="0" cy="0" r="16" />
             <circle class="city-marker" cx="0" cy="0" r="7" />
             <g transform="translate(-15, 18)">
@@ -1074,7 +1074,7 @@
           </g>
 
           <!-- São Paulo - SP (Southeast coast inside São Paulo bulge) -->
-          <g class="city-node" transform="translate(480, 440)">
+          <g class="city-node" transform="translate(485, 425)">
             <!-- Concentric landing celebration ripples -->
             <circle class="destination-celebration" cx="0" cy="0" r="10" />
             
@@ -1277,11 +1277,11 @@
               setTimeout(() => {
                 body.className = "state-landed";
                 
-                // Explode celebration hearts over São Paulo coords (x=480, y=440)
+                // Explode celebration hearts over São Paulo coords (x=485, y=425)
                 const mapSvg = document.getElementById("map-svg");
                 const svgRect = mapSvg.getBoundingClientRect();
-                const spX = svgRect.left + (480 / 800) * svgRect.width;
-                const spY = svgRect.top + (440 / 600) * svgRect.height;
+                const spX = svgRect.left + (485 / 800) * svgRect.width;
+                const spY = svgRect.top + (425 / 600) * svgRect.height;
                 
                 createParticle(spX, spY, true, 25);
                 
