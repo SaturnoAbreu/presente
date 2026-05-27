@@ -386,18 +386,18 @@
       transform: translateY(10px);
     }
 
-    /* THE ELEGANT LETTER (ONLY "TE AMAMOS" TEXT) */
+    /* THE ELEGANT LETTER (DISTINCT ROSY BACKGROUND) */
     .letter {
       position: absolute;
       bottom: 12px;
       left: 5%;
       width: 90%;
       height: 220px;
-      background-color: #fffdf9;
+      background-color: #ffe4e6; /* Gorgeous soft pink color, distinct and rosy! */
       border-radius: 8px;
-      padding: 16px;
+      padding: 20px;
       z-index: 2;
-      border: 1px solid #fdf4f5;
+      border: 1px solid #fecdd3;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
       transform: translateY(0) scale(0.96);
       transition: transform 1.2s cubic-bezier(0.34, 1.35, 0.64, 1), box-shadow 1.2s ease;
@@ -413,7 +413,7 @@
       inset: 6px;
       border: 1.5px solid transparent;
       border-image: var(--gold-foil) 1;
-      opacity: 0.65;
+      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -426,16 +426,18 @@
 
     .letter-title {
       font-family: var(--font-serif);
-      font-size: 3rem;
+      font-size: 1.7rem; /* Styled perfectly to fit the longer daughters text */
       font-weight: 800;
       text-align: center;
-      background: linear-gradient(135deg, #be123c 0%, #db2777 50%, #e11d48 100%);
+      background: linear-gradient(135deg, #9f1239 0%, #db2777 50%, #be123c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
+      line-height: 1.45;
       opacity: 0;
       transform: scale(0.8) translateY(10px);
       transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+      max-width: 90%;
     }
 
     body.state-opening .letter-title,
@@ -468,7 +470,6 @@
       transform: scale(0) rotate(0deg);
     }
 
-    /* Snaps flat and folds into a triangle, then vanishes quickly */
     body.state-origami .origami-fold-sheet {
       animation: fold-snap 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
@@ -487,13 +488,13 @@
       65% {
         transform: scale(0.9) rotate(45deg);
         background: #fbcfe8;
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* triangle */
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
       }
       90% {
         transform: scale(0.7) rotate(90deg);
         background: #f472b6;
         opacity: 1;
-        clip-path: polygon(50% 0%, 35% 100%, 65% 100%); /* arrow/origami */
+        clip-path: polygon(50% 0%, 35% 100%, 65% 100%);
       }
       100% {
         transform: scale(0) rotate(180deg);
@@ -502,7 +503,6 @@
       }
     }
 
-    /* Dynamic SVG airplane rising in place of the origami fold */
     .rising-airplane {
       position: absolute;
       width: 100px;
@@ -527,7 +527,7 @@
       }
       100% {
         opacity: 0;
-        transform: scale(0.3) rotate(35deg) translate(200px, -200px); /* flies away to introduce map */
+        transform: scale(0.3) rotate(35deg) translate(200px, -200px);
       }
     }
 
@@ -579,7 +579,7 @@
       letter-spacing: 0.25em;
     }
 
-    /* GEOGRAPHICALLY ACCURATE BRAZIL SILHOUETTE */
+    /* GEOGRAPHICALLY CORRECT SILHOUETTE OF BRAZIL */
     .brazil-border {
       fill: rgba(255, 255, 255, 0.48);
       stroke: rgba(244, 114, 182, 0.38);
@@ -670,7 +670,7 @@
       opacity: 0.9;
     }
 
-    /* THE FLIGHT ANIMAITON */
+    /* THE FLIGHT ANIMATION */
     .paper-airplane-container {
       position: absolute;
       top: 0;
@@ -698,7 +698,7 @@
       filter: drop-shadow(0 8px 15px rgba(225, 29, 72, 0.22));
     }
 
-    /* ANIMATING THE FLIGHT OVER ACCURATE COORDS (POA x=390, y=530 TO SP x=480, y=440) */
+    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=390, y=530) TO SP (x=480, y=440) */
     body.state-flying .paper-airplane-container {
       offset-path: path('M 390 530 C 400 350, 450 350, 480 440');
       offset-rotate: auto 75deg;
@@ -760,14 +760,14 @@
     }
 
     /* ==========================================================================
-       9. CELEBRATION MODAL (GLASSMORPHISM)
+       9. CELEBRATION MODAL (MINIMALIST CARD: JUST A Pulsing Heart and Replay Button)
        ========================================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 42, 0.15);
+      background: rgba(15, 23, 42, 0.12);
       backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex;
@@ -787,14 +787,19 @@
     .celebration-modal {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      max-width: 460px;
+      max-width: 320px; /* Slim and cute size */
       width: 100%;
       border-radius: 24px;
-      padding: 38px 30px;
+      padding: 35px 30px;
       text-align: center;
       box-shadow: 0 30px 80px rgba(225, 29, 72, 0.12), inset 0 2px 2px rgba(255,255,255,0.6);
       transform: translateY(30px) scale(0.92);
       transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 25px; /* Spacing between heart and button */
     }
 
     body.state-landed .celebration-modal {
@@ -802,66 +807,36 @@
     }
 
     .modal-heart-seal {
-      width: 64px;
-      height: 64px;
+      width: 76px;
+      height: 76px;
       background: linear-gradient(135deg, #f43f5e 0%, #db2777 100%);
       color: #fff;
-      font-size: 2rem;
+      font-size: 2.3rem;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 auto 20px auto;
       box-shadow: 0 10px 25px rgba(225, 29, 72, 0.3);
       position: relative;
+      animation: final-heart-beat 1.2s infinite alternate cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     .modal-heart-seal::after {
       content: '';
       position: absolute;
-      inset: -5px;
-      border: 1.5px dashed var(--pink-primary);
+      inset: -6px;
+      border: 2px dashed var(--pink-primary);
       border-radius: 50%;
       animation: spin-clockwise 15s linear infinite;
     }
 
+    @keyframes final-heart-beat {
+      0% { transform: scale(1); filter: drop-shadow(0 5px 10px rgba(225, 29, 72, 0.2)); }
+      100% { transform: scale(1.18); filter: drop-shadow(0 15px 25px rgba(225, 29, 72, 0.45)); }
+    }
+
     @keyframes spin-clockwise {
       100% { transform: rotate(360deg); }
-    }
-
-    .modal-title {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #9f1239;
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-
-    .modal-message {
-      font-family: var(--font-body);
-      font-size: 0.98rem;
-      line-height: 1.65;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
-    .modal-message strong {
-      color: var(--pink-dark);
-      font-weight: 600;
-    }
-
-    .modal-footer {
-      border-top: 1px solid rgba(225, 29, 72, 0.08);
-      padding-top: 20px;
-    }
-
-    .modal-signature {
-      font-family: var(--font-hand);
-      font-size: 1.95rem;
-      font-weight: 700;
-      color: var(--pink-accent);
-      margin-bottom: 22px;
     }
 
     .btn-replay {
@@ -881,6 +856,7 @@
       gap: 10px;
       position: relative;
       overflow: hidden;
+      width: auto;
     }
 
     .btn-replay::before {
@@ -909,21 +885,18 @@
     @media (max-width: 640px) {
       .envelope-wrapper { width: 310px; height: 215px; }
       .letter { height: 185px; }
-      .letter-title { font-size: 2.3rem; }
+      .letter-title { font-size: 1.4rem; }
       body.state-opening .letter,
       body.state-reading .letter { transform: translateY(-120px) scale(1.05) rotate(-1.5deg); }
       
       .map-wrapper { height: 480px; }
       .paper-airplane-container { width: 38px; height: 38px; }
       
-      /* Scale coordinates on smaller viewports dynamically through SVG aspect ratios */
       body.state-landed .paper-airplane-container {
         left: calc(50% + 80px);
         top: calc(50% + 90px);
       }
-      .celebration-modal { padding: 28px 20px; }
-      .modal-title { font-size: 1.5rem; }
-      .modal-message { font-size: 0.88rem; }
+      .celebration-modal { padding: 28px 20px; max-width: 280px; }
     }
   </style>
 </head>
@@ -969,9 +942,9 @@
           <!-- Opening Flap -->
           <div class="envelope-flap"></div>
           
-          <!-- Elegant Letter (Centralizes the text "Te amamos") -->
+          <!-- Elegant Letter (Vibrant pink, distinct rosy background, new custom text) -->
           <div class="letter" id="letter">
-            <h2 class="letter-title">Te amamos</h2>
+            <h2 class="letter-title">De suas filhas, com todo o amor do mundo, Feliz aniversário</h2>
           </div>
           
           <!-- 3D pocket folds -->
@@ -1017,7 +990,7 @@
     <div class="map-stage">
       <div class="map-wrapper">
         
-        <!-- Highly aesthetic SVG Map of Brazil -->
+        <!-- Geographically Correct SVG Map of Brazil -->
         <svg id="map-svg" viewBox="0 0 800 600">
           <defs>
             <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
@@ -1041,21 +1014,27 @@
 
           <!-- GEOGRAPHICALLY ACCURATE BRAZIL OUTLINE -->
           <path class="brazil-border" filter="url(#shadow)" d="
-            M 380 550 
-            C 360 520, 370 480, 340 460
-            C 310 440, 270 430, 250 400
-            C 230 370, 210 350, 180 340
-            C 150 330, 130 280, 140 250
-            C 150 220, 190 190, 220 180
-            C 250 170, 270 140, 300 120
-            C 330 100, 360 80, 400 80
-            C 440 80, 480 110, 520 120
-            C 560 130, 600 120, 640 140
-            C 680 160, 690 190, 670 230
-            C 650 270, 620 300, 600 340
-            C 580 380, 530 420, 500 440
-            C 470 460, 440 490, 420 520
-            C 400 550, 390 560, 380 550 Z
+            M 390 530
+            C 370 510, 350 490, 335 485
+            C 320 480, 310 450, 280 440
+            C 270 435, 290 410, 275 390
+            C 260 370, 230 360, 210 350
+            C 190 340, 155 340, 140 330
+            C 125 320, 130 300, 145 285
+            C 160 270, 135 250, 140 230
+            C 145 210, 175 220, 195 200
+            C 215 180, 240 150, 265 125
+            C 290 100, 320 95, 340 105
+            C 360 115, 385 110, 410 100
+            C 435 90, 455 75, 475 90
+            C 495 105, 530 115, 555 120
+            C 580 125, 605 135, 625 150
+            C 645 165, 665 175, 670 195
+            C 675 215, 665 230, 650 245
+            C 635 260, 620 280, 600 310
+            C 580 340, 560 375, 535 405
+            C 510 435, 480 440, 465 465
+            C 450 490, 420 515, 390 530 Z
           " />
 
           <!-- Compass Rose -->
@@ -1130,24 +1109,17 @@
     </div>
 
     <!-- ==========================================
-         STAGE 4: CELEBRATION MODAL
+         STAGE 4: CELEBRATION MODAL (MINIMALIST HEART & BUTTON ONLY)
          ========================================== -->
     <div class="modal-overlay" id="modal-overlay">
       <div class="celebration-modal">
         <div class="modal-heart-seal">❤️</div>
-        <h3 class="modal-title">O Amor Transpõe Distâncias</h3>
-        <p class="modal-message">
-          De <strong>Porto Alegre - RS</strong> a <strong>São Paulo - SP</strong>, nosso carinho viajou pelo ar como um origami de sentimentos para te abraçar e lembrar o quanto você é essencial em nossas vidas!
-        </p>
-        <div class="modal-footer">
-          <p class="modal-signature">Com todo o nosso amor ✨</p>
-          <button class="btn-replay" id="btn-replay">
-            Reviver esta Jornada
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
-            </svg>
-          </button>
-        </div>
+        <button class="btn-replay" id="btn-replay">
+          Reviver esta Jornada
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+          </svg>
+        </button>
       </div>
     </div>
 
