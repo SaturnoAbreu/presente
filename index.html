@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Uma Jornada de Amor ✨</title>
   
-  <!-- Google Fonts para Tipografia Premium -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&family=Playfair+Display:ital,wght@0,800;1,700&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       1. VARIÁVEIS DO SISTEMA DE DESIGN (TEMA & TOKENS)
+       1. VARIABLES & DESIGN SYSTEM
        ========================================================================== */
     :root {
       --font-title: 'Outfit', sans-serif;
@@ -20,23 +20,23 @@
       --font-body: 'Inter', sans-serif;
       --font-hand: 'Dancing Script', cursive;
 
-      --pink-primary: #fb7185;   /* Rose 400 */
-      --pink-dark: #e11d48;      /* Rose 600 */
-      --pink-light: #fff1f2;     /* Rose 50 */
-      --pink-accent: #db2777;    /* Pink 600 */
-      --pink-soft: #fbcfe8;      /* Pink 200 */
+      --pink-primary: #fb7185;
+      --pink-dark: #e11d48;
+      --pink-light: #fff1f2;
+      --pink-accent: #db2777;
+      --pink-soft: #fbcfe8;
       
       --gold-foil: linear-gradient(135deg, #eab308 0%, #fef08a 50%, #ca8a04 100%);
-      --text-main: #1f2937;      /* Gray 800 */
-      --text-muted: #4b5563;     /* Gray 600 */
-      --envelope-shadow: 0 25px 60px rgba(225, 29, 72, 0.25);
-      --card-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
-      --glass-bg: rgba(255, 255, 255, 0.85);
-      --glass-border: rgba(255, 255, 255, 0.5);
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --envelope-shadow: 0 25px 60px rgba(225, 29, 72, 0.22);
+      --card-shadow: 0 30px 70px rgba(0, 0, 0, 0.06);
+      --glass-bg: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.6);
     }
 
     /* ==========================================================================
-       2. RESET & ESTILOS GLOBAIS
+       2. RESET & GLOBAL STYLES
        ========================================================================== */
     *, *::before, *::after {
       box-sizing: border-box;
@@ -57,7 +57,7 @@
     }
 
     /* ==========================================================================
-       3. CAMADAS DE BACKGOUND FLUIDO (TRANSIÇÕES SUAVES)
+       3. FLUID BACKGROUND LAYERS (SMOOTH TRANSITIONS)
        ========================================================================== */
     .bg-layer {
       position: fixed;
@@ -65,7 +65,7 @@
       width: 100%;
       height: 100%;
       z-index: -10;
-      transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+      transition: opacity 1.5s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
     .bg-romantic {
@@ -78,7 +78,6 @@
       opacity: 0;
     }
 
-    /* Transição do fundo controlado pelo estado */
     body.state-flight-intro .bg-romantic,
     body.state-flying .bg-romantic,
     body.state-landed .bg-romantic {
@@ -91,7 +90,7 @@
       opacity: 1;
     }
 
-    /* Nuvens em movimento lento no fundo */
+    /* Slow clouds in the background */
     .bg-clouds {
       position: absolute;
       inset: 0;
@@ -116,34 +115,17 @@
       animation: float-cloud 40s linear infinite;
     }
 
-    .cloud-slow:nth-child(1) {
-      top: 15%;
-      width: 120px;
-      animation-duration: 48s;
-      animation-delay: -5s;
-    }
-
-    .cloud-slow:nth-child(2) {
-      top: 45%;
-      width: 180px;
-      animation-duration: 65s;
-      animation-delay: -15s;
-    }
-
-    .cloud-slow:nth-child(3) {
-      top: 70%;
-      width: 140px;
-      animation-duration: 35s;
-      animation-delay: -25s;
-    }
+    .cloud-slow:nth-child(1) { top: 12%; width: 120px; animation-duration: 45s; animation-delay: -5s; }
+    .cloud-slow:nth-child(2) { top: 40%; width: 160px; animation-duration: 60s; animation-delay: -15s; }
+    .cloud-slow:nth-child(3) { top: 68%; width: 130px; animation-duration: 32s; animation-delay: -22s; }
 
     @keyframes float-cloud {
-      0% { transform: translateX(-150px); }
-      100% { transform: translateX(calc(100vw + 150px)); }
+      0% { transform: translateX(-180px); }
+      100% { transform: translateX(calc(100vw + 180px)); }
     }
 
     /* ==========================================================================
-       4. PARTICULAS FLUTUANTES (SISTEMA DE EFEITO EMOCIONAL)
+       4. FLOATING PARTICLES (EMOTIONAL ATMOSPHERE)
        ========================================================================== */
     .particles-container {
       position: fixed;
@@ -167,12 +149,8 @@
         transform: translateY(10vh) translateX(0) scale(0) rotate(0deg);
         opacity: 0;
       }
-      10% {
-        opacity: 0.8;
-      }
-      90% {
-        opacity: 0.4;
-      }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.4; }
       100% {
         transform: translateY(-90vh) translateX(var(--drift)) scale(var(--scale)) rotate(var(--rot));
         opacity: 0;
@@ -180,7 +158,7 @@
     }
 
     /* ==========================================================================
-       5. CONTAINER DA APLICAÇÃO & LAYOUT DE ESTADOS
+       5. STATE MANAGEMENT & LAYOUT CONTAINERS
        ========================================================================== */
     .app-container {
       position: relative;
@@ -191,7 +169,6 @@
       align-items: center;
     }
 
-    /* Controladores de visibilidade dos Estágios baseados nas classes do body */
     .envelope-stage, .origami-stage, .map-stage {
       position: absolute;
       display: flex;
@@ -201,11 +178,10 @@
       height: 100%;
       pointer-events: none;
       opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scale(0.92);
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Estado Inicial: Cartão/Envelope ativo */
     body.state-initial .envelope-stage,
     body.state-opening .envelope-stage,
     body.state-reading .envelope-stage {
@@ -214,14 +190,12 @@
       pointer-events: all;
     }
 
-    /* Estado Origami ativo */
     body.state-origami .origami-stage {
       opacity: 1;
       transform: scale(1);
       pointer-events: all;
     }
 
-    /* Estado Mapa/Viagem ativo */
     body.state-flight-intro .map-stage,
     body.state-flying .map-stage,
     body.state-landed .map-stage {
@@ -231,12 +205,12 @@
     }
 
     /* ==========================================================================
-       6. ESTÁGIO 1: ENVELOPE 3D E CARTÃO DE PRESENTES
+       6. STAGE 1: 3D GIFT ENVELOPE & LETTER
        ========================================================================== */
     .envelope-wrapper {
       position: relative;
-      width: 380px;
-      height: 250px;
+      width: 360px;
+      height: 240px;
       perspective: 1200px;
       transform-style: preserve-3d;
       display: flex;
@@ -246,7 +220,6 @@
       transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* Pulsação ociosa do envelope para atrair o clique */
     .envelope-wrapper.idle-pulse {
       animation: float-envelope 4s ease-in-out infinite;
     }
@@ -262,12 +235,10 @@
       }
     }
 
-    /* Efeito de inclinação no hover */
     .envelope-wrapper:hover {
       transform: translateY(-8px) rotateX(5deg) scale(1.03);
     }
 
-    /* Elemento 3D do Envelope */
     .envelope {
       position: relative;
       width: 100%;
@@ -278,7 +249,6 @@
       box-shadow: var(--card-shadow);
     }
 
-    /* Face de trás do envelope */
     .envelope-back {
       position: absolute;
       inset: 0;
@@ -287,7 +257,6 @@
       z-index: 1;
     }
 
-    /* Bolso frontal (Flaps do envelope que o fecham) */
     .envelope-front-pocket {
       position: absolute;
       inset: 0;
@@ -295,7 +264,6 @@
       pointer-events: none;
     }
 
-    /* Desenho geométrico dos flaps frontais com bordas suaves e sombras para profundidade */
     .envelope-front-pocket::before {
       content: '';
       position: absolute;
@@ -303,7 +271,6 @@
       background: linear-gradient(135deg, rgba(254, 205, 211, 0.45) 0%, rgba(251, 113, 133, 0.8) 100%);
       clip-path: polygon(0% 100%, 50% 55%, 100% 100%);
       border-radius: 0 0 12px 12px;
-      box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.05);
     }
 
     .envelope-front-pocket::after {
@@ -324,7 +291,6 @@
       z-index: 3;
     }
 
-    /* Aba superior dobrável */
     .envelope-flap {
       position: absolute;
       top: 0;
@@ -339,40 +305,34 @@
       border-radius: 12px 12px 0 0;
     }
 
-    /* O Selo de Coração */
     .envelope-seal {
       position: absolute;
       top: 60%;
       left: 50%;
       transform: translate(-50%, -50%) scale(1);
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       background: #ffffff;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 8px 20px rgba(225, 29, 72, 0.3), inset 0 2px 5px rgba(255,255,255,1);
+      box-shadow: 0 8px 20px rgba(225, 29, 72, 0.25), inset 0 2px 4px rgba(255,255,255,1);
       z-index: 5;
       cursor: pointer;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .envelope-seal svg {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       fill: var(--pink-dark);
-      filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.3));
+      filter: drop-shadow(0 2px 4px rgba(225, 29, 72, 0.25));
       animation: heart-beat 1.5s infinite;
-      transition: fill 0.3s;
     }
 
     .envelope-seal:hover {
-      transform: translate(-50%, -50%) scale(1.18) rotate(5deg);
-    }
-
-    .envelope-seal:hover svg {
-      fill: #db2777;
+      transform: translate(-50%, -50%) scale(1.15) rotate(5deg);
     }
 
     @keyframes heart-beat {
@@ -382,21 +342,18 @@
       60% { transform: scale(1.2); }
     }
 
-    /* Instrução interativa logo abaixo */
     .envelope-hint {
-      margin-top: 35px;
-      font-size: 1.05rem;
-      font-weight: 500;
+      margin-top: 30px;
+      font-size: 1rem;
+      font-weight: 600;
       color: var(--pink-dark);
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.85);
       padding: 8px 22px;
       border-radius: 20px;
       backdrop-filter: blur(5px);
-      box-shadow: 0 4px 15px rgba(225, 29, 72, 0.08);
+      box-shadow: 0 4px 15px rgba(225, 29, 72, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.6);
       letter-spacing: 0.02em;
-      opacity: 1;
-      transform: translateY(0);
       transition: all 0.6s ease;
       animation: float-text 2s ease-in-out infinite;
     }
@@ -406,19 +363,14 @@
       50% { transform: translateY(-5px); }
     }
 
-    /* ==========================================================================
-       TRANSITIONS DO CLICK: ABERTURA DO ENVELOPE & DESLIZAMENTO DA CARTA
-       ========================================================================== */
-    
-    /* 1. Ao abrir: a aba rotaciona para cima */
+    /* CLIQ TRANSITIONS */
     body.state-opening .envelope-flap,
     body.state-reading .envelope-flap,
     body.state-origami .envelope-flap {
       transform: rotateX(180deg);
-      z-index: 1; /* Vai para trás da carta */
+      z-index: 1;
     }
 
-    /* 2. O selo explode/desaparece */
     body.state-opening .envelope-seal,
     body.state-reading .envelope-seal,
     body.state-origami .envelope-seal {
@@ -427,7 +379,6 @@
       pointer-events: none;
     }
 
-    /* Desaparece o texto de dica */
     body.state-opening .envelope-hint,
     body.state-reading .envelope-hint,
     body.state-origami .envelope-hint {
@@ -435,227 +386,153 @@
       transform: translateY(10px);
     }
 
-    /* ==========================================================================
-       A CARTA ELEGANTE ("TE AMAMOS")
-       ========================================================================== */
+    /* THE ELEGANT LETTER (ONLY "TE AMAMOS" TEXT) */
     .letter {
       position: absolute;
       bottom: 12px;
       left: 5%;
       width: 90%;
-      height: 290px;
-      background-color: #fffdfa; /* Papel nobre de tom off-white/creme */
+      height: 220px;
+      background-color: #fffdf9;
       border-radius: 8px;
-      padding: 24px 28px;
+      padding: 16px;
       z-index: 2;
       border: 1px solid #fdf4f5;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
       transform: translateY(0) scale(0.96);
-      transition: transform 1.4s cubic-bezier(0.34, 1.35, 0.64, 1), box-shadow 1.4s ease;
-      overflow: hidden;
+      transition: transform 1.2s cubic-bezier(0.34, 1.35, 0.64, 1), box-shadow 1.2s ease;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
     }
 
-    /* Textura suave e bordas douradas na carta */
     .letter::before {
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px solid transparent;
+      border: 1.5px solid transparent;
       border-image: var(--gold-foil) 1;
       opacity: 0.65;
       pointer-events: none;
     }
 
-    /* Elemento decorativo de marca d'água no fundo da carta */
-    .letter-bg-heart {
-      position: absolute;
-      bottom: -30px;
-      right: -30px;
-      width: 150px;
-      height: 150px;
-      fill: rgba(251, 113, 133, 0.05);
-      pointer-events: none;
-      transform: rotate(-15deg);
-    }
-
-    /* 3. A carta desliza para cima e rotaciona levemente */
     body.state-opening .letter,
     body.state-reading .letter {
-      transform: translateY(-190px) scale(1.06) rotate(-1.5deg);
+      transform: translateY(-135px) scale(1.05) rotate(-1.5deg);
       box-shadow: var(--card-shadow), 0 15px 40px rgba(225, 29, 72, 0.12);
       z-index: 5;
     }
 
-    /* Conteúdo Textual da Carta */
-    .letter-header {
-      display: flex;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: #b45309; /* Tom dourado escuro */
-      opacity: 0.8;
-    }
-
     .letter-title {
       font-family: var(--font-serif);
-      font-size: 2.15rem;
+      font-size: 3rem;
       font-weight: 800;
       text-align: center;
       background: linear-gradient(135deg, #be123c 0%, #db2777 50%, #e11d48 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin: 8px 0;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
       opacity: 0;
-      transform: translateY(15px);
-      transition: all 0.8s ease 0.6s;
+      transform: scale(0.8) translateY(10px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
     }
 
-    .letter-text {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--text-muted);
-      text-align: center;
-      padding: 0 6px;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: all 0.8s ease 0.8s;
-    }
-
-    .letter-footer {
-      font-family: var(--font-hand);
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: var(--pink-accent);
-      text-align: center;
-      opacity: 0;
-      transform: translateY(15px);
-      transition: all 0.8s ease 1s;
-    }
-
-    /* Disparo de revelação interna do texto da carta */
     body.state-opening .letter-title,
-    body.state-reading .letter-title,
-    body.state-opening .letter-text,
-    body.state-reading .letter-text,
-    body.state-opening .letter-footer,
-    body.state-reading .letter-footer {
+    body.state-reading .letter-title {
       opacity: 1;
-      transform: translateY(0);
+      transform: scale(1) translateY(0);
     }
 
-    /* ==========================================================================
-       TRANSITIONS DA DOBRA: CARTA ENCOLHE E SE RECOLHE
-       ========================================================================== */
+    /* COLLAPSE ON ORIGAMI */
     body.state-origami .envelope-wrapper {
-      transform: scale(0) rotate(270deg);
+      transform: scale(0) rotate(180deg);
       opacity: 0;
-      transition: transform 1.2s cubic-bezier(0.3, -0.05, 0.7, -0.15), opacity 1s ease;
+      transition: transform 0.6s cubic-bezier(0.3, -0.05, 0.7, -0.15), opacity 0.5s ease;
     }
 
     /* ==========================================================================
-       ESTÁGIO 2: ANIMAÇÃO DE DOBRA ORIGAMI
+       7. STAGE 2: SNAPPY FOLDING SHEET & SVG AIRPLANE EMERGENCE
        ========================================================================== */
     .origami-stage {
       z-index: 10;
     }
 
-    .folding-paper-wrapper {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      transform-style: preserve-3d;
-      perspective: 800px;
-    }
-
-    /* Papel Quadrado Base que Executa a Dobra de Origami */
-    .folding-paper {
-      width: 100%;
-      height: 100%;
+    .origami-fold-sheet {
+      width: 140px;
+      height: 140px;
       background: #faf9f6;
       border: 1px solid rgba(225, 29, 72, 0.15);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-      position: absolute;
-      transform-style: preserve-3d;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       opacity: 0;
-      transform: scale(0.2) rotate(0deg);
+      transform: scale(0) rotate(0deg);
     }
 
-    /* Efeito de dobra desencadeado na classe state-origami */
-    body.state-origami .folding-paper {
-      animation: origami-fold 2.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    /* Snaps flat and folds into a triangle, then vanishes quickly */
+    body.state-origami .origami-fold-sheet {
+      animation: fold-snap 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
     }
 
-    @keyframes origami-fold {
+    @keyframes fold-snap {
       0% {
         opacity: 0;
         transform: scale(0.3) rotate(0deg);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
-      15% {
+      30% {
         opacity: 1;
         transform: scale(1) rotate(15deg);
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       }
-      40% {
-        transform: rotateX(45deg) rotateY(45deg) scale(0.9);
-        background: #fff;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
       65% {
-        transform: rotateX(60deg) rotateY(180deg) scale(0.7);
+        transform: scale(0.9) rotate(45deg);
         background: #fbcfe8;
-        /* Dobra diagonal - transformado em triângulo */
-        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%); /* triangle */
       }
-      85% {
-        transform: rotateX(75deg) rotateY(360deg) scale(0.4);
+      90% {
+        transform: scale(0.7) rotate(90deg);
         background: #f472b6;
-        opacity: 0.9;
-        /* Formato de seta inicial do avião */
-        clip-path: polygon(50% 0%, 30% 100%, 70% 100%);
+        opacity: 1;
+        clip-path: polygon(50% 0%, 35% 100%, 65% 100%); /* arrow/origami */
       }
       100% {
-        transform: scale(0) rotate(540deg);
+        transform: scale(0) rotate(180deg);
         opacity: 0;
         clip-path: polygon(50% 0%, 50% 100%, 50% 100%);
       }
     }
 
-    /* Linhas translúcidas simulando dobras geométricas */
-    .fold {
+    /* Dynamic SVG airplane rising in place of the origami fold */
+    .rising-airplane {
       position: absolute;
-      inset: 0;
-      border: 0.5px dashed rgba(225, 29, 72, 0.25);
-      pointer-events: none;
+      width: 100px;
+      height: 100px;
       opacity: 0;
+      transform: scale(0) rotate(-180deg);
+      filter: drop-shadow(0 15px 30px rgba(225, 29, 72, 0.25));
     }
 
-    body.state-origami .fold {
-      opacity: 1;
-      transition: opacity 0.5s ease 0.4s;
+    body.state-origami .rising-airplane {
+      animation: plane-emerge 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards;
     }
 
-    .fold-left {
-      transform: rotate(45deg) scaleY(1.414);
-      transform-origin: top left;
-    }
-
-    .fold-right {
-      transform: rotate(-45deg) scaleY(1.414);
-      transform-origin: top right;
-    }
-
-    .fold-top {
-      height: 50%;
-      border-bottom: 0.5px dashed rgba(225, 29, 72, 0.25);
+    @keyframes plane-emerge {
+      0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.3) rotate(15deg);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.3) rotate(35deg) translate(200px, -200px); /* flies away to introduce map */
+      }
     }
 
     /* ==========================================================================
-       ESTÁGIO 3: MAPA DO BRASIL SVG & ROTA DE VOO DO AVIÃO
+       8. STAGE 3: GEOGRAPHICALLY ACCURATE BRAZIL MAP
        ========================================================================== */
     .map-stage {
       z-index: 5;
@@ -664,34 +541,30 @@
     .map-wrapper {
       position: relative;
       width: 100%;
-      max-width: 860px;
-      height: 640px;
+      max-width: 800px;
+      height: 600px;
       display: flex;
       justify-content: center;
       align-items: center;
       transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* Efeito dinâmico de zoom/pan no SVG do mapa durante o voo */
     #map-svg {
       width: 100%;
       height: 100%;
       filter: drop-shadow(0 15px 35px rgba(219, 39, 119, 0.08));
-      transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 4.2s cubic-bezier(0.4, 0, 0.2, 1);
       transform: scale(1.02);
     }
 
     body.state-flying #map-svg {
-      /* Altura dinâmica simulada por leve zoom out e deslocamento lateral */
       transform: scale(0.92) translate(-25px, 20px);
     }
 
     body.state-landed #map-svg {
-      /* Volta à normalidade pós-pouso */
       transform: scale(1) translate(0, 0);
     }
 
-    /* Estilos das Linhas de Grade e Elementos do Mapa */
     .map-grid-line {
       stroke: rgba(244, 114, 182, 0.12);
       stroke-width: 1.2;
@@ -706,17 +579,16 @@
       letter-spacing: 0.25em;
     }
 
-    /* Contorno Estilizado do Brasil */
+    /* GEOGRAPHICALLY ACCURATE BRAZIL SILHOUETTE */
     .brazil-border {
-      fill: rgba(255, 255, 255, 0.45);
-      stroke: rgba(244, 114, 182, 0.35);
+      fill: rgba(255, 255, 255, 0.48);
+      stroke: rgba(244, 114, 182, 0.38);
       stroke-width: 2.5;
       stroke-linejoin: round;
       stroke-dasharray: 6 3;
-      filter: drop-shadow(0 4px 15px rgba(244, 114, 182, 0.1));
+      filter: drop-shadow(0 4px 15px rgba(244, 114, 182, 0.08));
     }
 
-    /* Estado das Cidades no Mapa (Porto Alegre e São Paulo) */
     .city-node {
       cursor: pointer;
     }
@@ -749,21 +621,20 @@
 
     .city-label {
       font-family: var(--font-title);
-      font-size: 12.5px;
+      font-size: 13px;
       font-weight: 700;
       fill: var(--pink-dark);
-      filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.9));
+      filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.95));
       letter-spacing: 0.01em;
     }
 
     .city-state {
       font-family: var(--font-body);
       font-size: 9.5px;
-      font-weight: 500;
+      font-weight: 600;
       fill: var(--text-muted);
     }
 
-    /* Destaque especial do Ponto de Destino ao Pousar */
     .destination-celebration {
       fill: none;
       stroke: var(--gold-foil);
@@ -781,9 +652,7 @@
       100% { r: 55px; opacity: 0; stroke-width: 3px; }
     }
 
-    /* ==========================================================================
-       TRAJETÓRIA DO VOO & REVELAÇÃO DO TRAJETO TRACEJADO
-       ========================================================================== */
+    /* FLIGHT PATH TRAJECTORY */
     .flight-path-bg {
       fill: none;
       stroke: rgba(225, 29, 72, 0.08);
@@ -801,11 +670,7 @@
       opacity: 0.9;
     }
 
-    /* O trajeto inicia invisível e é desenhado via script animando o stroke-dashoffset */
-    
-    /* ==========================================================================
-       O AVIÃO DE PAPEL (ORIGAMI FLYING)
-       ========================================================================== */
+    /* THE FLIGHT ANIMAITON */
     .paper-airplane-container {
       position: absolute;
       top: 0;
@@ -819,7 +684,6 @@
       transform-origin: center center;
     }
 
-    /* Controla a exibição do avião conforme o estado */
     body.state-flight-intro .paper-airplane-container,
     body.state-flying .paper-airplane-container,
     body.state-landed .paper-airplane-container {
@@ -834,18 +698,16 @@
       filter: drop-shadow(0 8px 15px rgba(225, 29, 72, 0.22));
     }
 
-    /* Animação do Voo no mapa usando offset-path baseada no estado */
+    /* ANIMATING THE FLIGHT OVER ACCURATE COORDS (POA x=390, y=530 TO SP x=480, y=440) */
     body.state-flying .paper-airplane-container {
-      /* offset-path define o caminho SVG que o avião seguirá */
-      offset-path: path('M 300 460 C 350 200, 430 200, 480 380');
+      offset-path: path('M 390 530 C 400 350, 450 350, 480 440');
       offset-rotate: auto 75deg;
       animation: flight-trajectory 4.2s cubic-bezier(0.4, 0.05, 0.25, 1) forwards;
     }
 
-    /* Quando já pousado em SP */
     body.state-landed .paper-airplane-container {
       left: 480px;
-      top: 380px;
+      top: 440px;
       transform: scale(1.05) translate(-50%, -50%) rotate(25deg);
       animation: plane-hover-landed 3s ease-in-out infinite;
     }
@@ -855,30 +717,23 @@
       50% { transform: scale(1.05) translate(-50%, -50%) rotate(22deg) translateY(-4px); }
     }
 
-    /* Movimento de voo com sensação 3D de subida e descida (zoom/altitude) */
     @keyframes flight-trajectory {
       0% {
         offset-distance: 0%;
         transform: scale(0.8) translate(-50%, -50%);
       }
-      10% {
-        transform: scale(1.2) translate(-50%, -50%) rotateX(-10deg);
-      }
-      45% {
-        /* Ponto mais alto (Apogeu): avião cresce e ganha sombra maior */
-        transform: scale(1.75) translate(-50%, -50%) rotateX(-20deg);
+      15% { transform: scale(1.2) translate(-50%, -50%) rotateX(-10deg); }
+      48% {
+        transform: scale(1.7) translate(-50%, -50%) rotateX(-20deg);
         filter: drop-shadow(0 22px 30px rgba(225, 29, 72, 0.35));
       }
-      80% {
-        transform: scale(1.1) translate(-50%, -50%) rotateX(5deg);
-      }
+      82% { transform: scale(1.1) translate(-50%, -50%) rotateX(5deg); }
       100% {
         offset-distance: 100%;
         transform: scale(1) translate(-50%, -50%) rotate(25deg);
       }
     }
 
-    /* Pequenas linhas de vento/velocidade durante o voo */
     .wind-streak {
       position: absolute;
       background: linear-gradient(to right, transparent, rgba(255,255,255,0.7), transparent);
@@ -905,14 +760,14 @@
     }
 
     /* ==========================================================================
-       MODAL DE CELEBRAÇÃO FINAL (GLASSMORPHISM)
+       9. CELEBRATION MODAL (GLASSMORPHISM)
        ========================================================================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
-      background: rgba(15, 23, 42, 0.18); /* Backdrop escuro sutil */
+      background: rgba(15, 23, 42, 0.15);
       backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex;
@@ -924,7 +779,6 @@
       transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* Ativa o modal de comemoração após o pouso */
     body.state-landed .modal-overlay {
       opacity: 1;
       pointer-events: all;
@@ -933,16 +787,14 @@
     .celebration-modal {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      max-width: 480px;
+      max-width: 460px;
       width: 100%;
       border-radius: 24px;
-      padding: 40px 32px;
+      padding: 38px 30px;
       text-align: center;
-      box-shadow: 0 30px 80px rgba(225, 29, 72, 0.15), inset 0 2px 2px rgba(255,255,255,0.6);
+      box-shadow: 0 30px 80px rgba(225, 29, 72, 0.12), inset 0 2px 2px rgba(255,255,255,0.6);
       transform: translateY(30px) scale(0.92);
-      transition: transform 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
+      transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     body.state-landed .celebration-modal {
@@ -950,17 +802,17 @@
     }
 
     .modal-heart-seal {
-      width: 68px;
-      height: 68px;
+      width: 64px;
+      height: 64px;
       background: linear-gradient(135deg, #f43f5e 0%, #db2777 100%);
       color: #fff;
-      font-size: 2.15rem;
+      font-size: 2rem;
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0 auto 20px auto;
-      box-shadow: 0 10px 25px rgba(225, 29, 72, 0.35);
+      box-shadow: 0 10px 25px rgba(225, 29, 72, 0.3);
       position: relative;
     }
 
@@ -979,9 +831,9 @@
 
     .modal-title {
       font-family: var(--font-serif);
-      font-size: 1.85rem;
+      font-size: 1.8rem;
       font-weight: 700;
-      color: #9f1239; /* Rose 800 */
+      color: #9f1239;
       margin-bottom: 12px;
       line-height: 1.3;
     }
@@ -991,7 +843,7 @@
       font-size: 0.98rem;
       line-height: 1.65;
       color: var(--text-muted);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .modal-message strong {
@@ -1000,8 +852,8 @@
     }
 
     .modal-footer {
-      border-top: 1px solid rgba(225, 29, 72, 0.1);
-      padding-top: 24px;
+      border-top: 1px solid rgba(225, 29, 72, 0.08);
+      padding-top: 20px;
     }
 
     .modal-signature {
@@ -1009,21 +861,20 @@
       font-size: 1.95rem;
       font-weight: 700;
       color: var(--pink-accent);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
-    /* Botão Premium Replay */
     .btn-replay {
       background: linear-gradient(135deg, #f43f5e 0%, #be123c 100%);
       color: #ffffff;
       border: none;
       font-family: var(--font-title);
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      padding: 14px 34px;
+      padding: 12px 30px;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(225, 29, 72, 0.35);
+      box-shadow: 0 8px 25px rgba(225, 29, 72, 0.3);
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       display: inline-flex;
       align-items: center;
@@ -1043,72 +894,46 @@
       transition: left 0.6s ease;
     }
 
-    .btn-replay:hover::before {
-      left: 100%;
-    }
+    .btn-replay:hover::before { left: 100%; }
 
     .btn-replay:hover {
-      transform: translateY(-3px) scale(1.04);
-      box-shadow: 0 12px 30px rgba(225, 29, 72, 0.45);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 30px rgba(225, 29, 72, 0.4);
     }
 
-    .btn-replay:active {
-      transform: translateY(1px);
-    }
+    .btn-replay:active { transform: translateY(1px); }
 
     /* ==========================================================================
-       7. DESIGN RESPONSIVO
+       10. RESPONSIVE DESIGN
        ========================================================================== */
     @media (max-width: 640px) {
-      .envelope-wrapper {
-        width: 320px;
-        height: 210px;
-      }
-      .letter {
-        height: 250px;
-        padding: 18px 20px;
-      }
-      .letter-title {
-        font-size: 1.8rem;
-      }
-      .letter-text {
-        font-size: 0.85rem;
-        line-height: 1.5;
-      }
-      .letter-footer {
-        font-size: 1.45rem;
-      }
+      .envelope-wrapper { width: 310px; height: 215px; }
+      .letter { height: 185px; }
+      .letter-title { font-size: 2.3rem; }
       body.state-opening .letter,
-      body.state-reading .letter {
-        transform: translateY(-165px) scale(1.05) rotate(-1.5deg);
+      body.state-reading .letter { transform: translateY(-120px) scale(1.05) rotate(-1.5deg); }
+      
+      .map-wrapper { height: 480px; }
+      .paper-airplane-container { width: 38px; height: 38px; }
+      
+      /* Scale coordinates on smaller viewports dynamically through SVG aspect ratios */
+      body.state-landed .paper-airplane-container {
+        left: calc(50% + 80px);
+        top: calc(50% + 90px);
       }
-      .map-wrapper {
-        height: 480px;
-      }
-      /* Ajuste escala avião */
-      .paper-airplane-container {
-        width: 38px;
-        height: 38px;
-      }
-      .celebration-modal {
-        padding: 30px 20px;
-      }
-      .modal-title {
-        font-size: 1.55rem;
-      }
-      .modal-message {
-        font-size: 0.9rem;
-      }
+      .celebration-modal { padding: 28px 20px; }
+      .modal-title { font-size: 1.5rem; }
+      .modal-message { font-size: 0.88rem; }
     }
   </style>
 </head>
 <body class="state-initial">
 
-  <!-- Camadas de Fundo para Transições Fluidas -->
+  <!-- Smooth dynamic background layers -->
   <div class="bg-layer bg-romantic"></div>
   <div class="bg-layer bg-sky"></div>
   
-  <!-- Nuvens slow no fundo (Viagem) -->
+  <!-- Slow background clouds (active on flight) -->
   <div class="bg-clouds">
     <svg class="cloud-slow" viewBox="0 0 100 40" style="left: -10%;">
       <path d="M 10 30 Q 20 15, 35 20 Q 50 5, 65 20 Q 80 15, 90 30 Z" />
@@ -1121,49 +946,39 @@
     </svg>
   </div>
 
-  <!-- Linhas de vento virtuais para altitude -->
+  <!-- Parallax wind streaks -->
   <div class="wind-streak"></div>
   <div class="wind-streak"></div>
   <div class="wind-streak"></div>
 
-  <!-- Container de Partículas Dinâmicas -->
+  <!-- Particle canvas container -->
   <div class="particles-container" id="particles-container"></div>
 
-  <!-- CONTAINER CENTRAL -->
+  <!-- APP CONTAINER -->
   <div class="app-container">
 
     <!-- ==========================================
-         ESTÁGIO 1: CARTÃO PRESENTE / ENVELOPE 3D
+         STAGE 1: 3D GIFT CARD / ENVELOPE
          ========================================== -->
     <div class="envelope-stage">
       <div class="envelope-wrapper idle-pulse" id="envelope-wrapper">
         <div class="envelope">
-          <!-- Traseira do envelope -->
+          <!-- Back of envelope -->
           <div class="envelope-back"></div>
           
-          <!-- Aba Dobrável Superior -->
+          <!-- Opening Flap -->
           <div class="envelope-flap"></div>
           
-          <!-- A Carta Elegante (oculta dentro) -->
+          <!-- Elegant Letter (Centralizes the text "Te amamos") -->
           <div class="letter" id="letter">
-            <svg class="letter-bg-heart" viewBox="0 0 32 32">
-              <path d="M16,28.22C15.65,28.22,1.38,15.6,1.05,9.66A8,8,0,0,1,14.65,4.35L16,6.13l1.35-1.78A8,8,0,0,1,30.95,9.66C30.62,15.6,16.35,28.22,16,28.22Z"/>
-            </svg>
-            <div class="letter-header">
-              <span>✨</span>
-            </div>
             <h2 class="letter-title">Te amamos</h2>
-            <p class="letter-text">
-              Para quem ilumina os nossos caminhos, traz doçura aos nossos dias e nos enche de orgulho. O seu amor nos inspira, e o nosso carinho por você não conhece limites!
-            </p>
-            <div class="letter-footer">Com todo o amor do mundo, sempre ❤️</div>
           </div>
           
-          <!-- Bolso Frontal e Flaps Tridimensionais -->
+          <!-- 3D pocket folds -->
           <div class="envelope-front-pocket"></div>
           <div class="envelope-side-right"></div>
           
-          <!-- Selo de Coração Pulsante -->
+          <!-- Ruby Heart Seal -->
           <div class="envelope-seal" id="envelope-seal">
             <svg viewBox="0 0 32 32">
               <path d="M16,28.22C15.65,28.22,1.38,15.6,1.05,9.66A8,8,0,0,1,14.65,4.35L16,6.13l1.35-1.78A8,8,0,0,1,30.95,9.66C30.62,15.6,16.35,28.22,16,28.22Z"/>
@@ -1175,39 +990,46 @@
     </div>
 
     <!-- ==========================================
-         ESTÁGIO 2: DOBRA ORIGAMI
+         STAGE 2: ORIGAMI TRANSFORMATION
          ========================================== -->
     <div class="origami-stage">
-      <div class="folding-paper-wrapper">
-        <div class="folding-paper">
-          <div class="fold fold-left"></div>
-          <div class="fold fold-right"></div>
-          <div class="fold fold-top"></div>
-        </div>
+      <!-- Folding sheet -->
+      <div class="origami-fold-sheet">
+        <div class="fold fold-left"></div>
+        <div class="fold fold-right"></div>
+        <div class="fold fold-top"></div>
+      </div>
+      
+      <!-- Rising vector paper airplane inside origami fold -->
+      <div class="rising-airplane">
+        <svg viewBox="0 0 100 100" style="width:100%; height:100%;">
+          <polygon points="50,15 15,72 50,56" fill="#fbcfe8" stroke="#f472b6" stroke-width="0.75"/>
+          <polygon points="50,15 85,72 50,56" fill="#ffffff" stroke="#f472b6" stroke-width="0.75"/>
+          <polygon points="50,15 50,56 42,52" fill="#f472b6" opacity="0.8"/>
+          <polygon points="50,15 50,56 58,52" fill="#db2777" opacity="0.5"/>
+        </svg>
       </div>
     </div>
 
     <!-- ==========================================
-         ESTÁGIO 3: MAPA CONEXÃO & VOO
+         STAGE 3: MAPA & VOO (POA TO SP)
          ========================================== -->
     <div class="map-stage">
       <div class="map-wrapper">
         
-        <!-- SVG Principal do Mapa Estilizado -->
+        <!-- Highly aesthetic SVG Map of Brazil -->
         <svg id="map-svg" viewBox="0 0 800 600">
           <defs>
-            <!-- Sombra suave para o continente -->
             <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
               <feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#db2777" flood-opacity="0.08"/>
             </filter>
-            <!-- Gradiente linear dourado para os pins e trilha -->
             <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stop-color="#fb7185" />
               <stop offset="100%" stop-color="#db2777" />
             </linearGradient>
           </defs>
 
-          <!-- Linhas estéticas de latitude/longitude -->
+          <!-- Latitude / Longitude lines -->
           <line class="map-grid-line" x1="50" y1="150" x2="750" y2="150" />
           <line class="map-grid-line" x1="50" y1="300" x2="750" y2="300" />
           <line class="map-grid-line" x1="50" y1="450" x2="750" y2="450" />
@@ -1215,38 +1037,33 @@
           <line class="map-grid-line" x1="400" y1="50" x2="400" y2="550" />
           <line class="map-grid-line" x1="600" y1="50" x2="600" y2="550" />
 
-          <!-- Texto do Oceano Atlântico -->
-          <text class="map-ocean-label" x="520" y="480">OCEANO ATLÂNTICO</text>
+          <text class="map-ocean-label" x="530" y="520">OCEANO ATLÂNTICO</text>
 
-          <!-- Silhueta Estilizada e Simétrica do Brasil -->
+          <!-- GEOGRAPHICALLY ACCURATE BRAZIL OUTLINE -->
           <path class="brazil-border" filter="url(#shadow)" d="
-            M 300 480 
-            C 285 475, 260 455, 250 435 
-            C 240 415, 230 405, 215 390 
-            C 200 375, 175 365, 160 345 
-            C 145 325, 130 305, 120 280 
-            C 110 255, 105 230, 115 205 
-            C 125 180, 140 165, 160 155 
-            C 180 145, 195 130, 210 115 
-            C 225 100, 255 75, 290 65 
-            C 325 55, 360 55, 395 65 
-            C 430 75, 465 95, 490 110 
-            C 515 125, 545 135, 565 155 
-            C 585 175, 605 200, 615 225 
-            C 625 250, 620 280, 605 310 
-            C 590 340, 565 375, 545 405 
-            C 525 435, 490 460, 460 475 
-            C 430 490, 390 515, 360 525 
-            C 330 535, 315 485, 300 480 Z
+            M 380 550 
+            C 360 520, 370 480, 340 460
+            C 310 440, 270 430, 250 400
+            C 230 370, 210 350, 180 340
+            C 150 330, 130 280, 140 250
+            C 150 220, 190 190, 220 180
+            C 250 170, 270 140, 300 120
+            C 330 100, 360 80, 400 80
+            C 440 80, 480 110, 520 120
+            C 560 130, 600 120, 640 140
+            C 680 160, 690 190, 670 230
+            C 650 270, 620 300, 600 340
+            C 580 380, 530 420, 500 440
+            C 470 460, 440 490, 420 520
+            C 400 550, 390 560, 380 550 Z
           " />
 
-          <!-- Elemento Rosa dos Ventos Decorativa -->
+          <!-- Compass Rose -->
           <g transform="translate(680, 130)" opacity="0.65">
             <circle cx="0" cy="0" r="28" fill="none" stroke="rgba(244, 114, 182, 0.25)" stroke-width="1"/>
             <circle cx="0" cy="0" r="33" fill="none" stroke="rgba(244, 114, 182, 0.12)" stroke-width="0.5" stroke-dasharray="2 2"/>
             <line x1="-38" y1="0" x2="38" y2="0" stroke="rgba(244, 114, 182, 0.2)" stroke-width="0.5"/>
             <line x1="0" y1="-38" x2="0" y2="38" stroke="rgba(244, 114, 182, 0.2)" stroke-width="0.5"/>
-            <!-- N - S - E - W -->
             <polygon points="0,-33 3.5,-5 0,0" fill="#e11d48"/>
             <polygon points="0,-33 -3.5,-5 0,0" fill="#fda4af"/>
             <polygon points="0,33 3.5,5 0,0" fill="#fda4af"/>
@@ -1258,42 +1075,41 @@
             <text x="-4" y="-38" font-family="'Outfit', sans-serif" font-size="9" fill="#e11d48" font-weight="bold">N</text>
           </g>
 
-          <!-- ROTA DE VOO (TRAJETÓRIA) -->
-          <!-- Caminho de Fundo Sutil -->
-          <path class="flight-path-bg" d="M 300 460 C 350 200, 430 200, 480 380" />
+          <!-- FLIGHT PATH (TRAJECTORY COMMAND) -->
+          <!-- Background guideline path -->
+          <path class="flight-path-bg" d="M 390 530 C 400 350, 450 350, 480 440" />
           
-          <!-- Caminho Ativo que Revela Dotted Line -->
-          <path id="flight-trail" class="flight-path-active" d="M 300 460 C 350 200, 430 200, 480 380" />
+          <!-- Drawing path activated during flight -->
+          <path id="flight-trail" class="flight-path-active" d="M 390 530 C 400 350, 450 350, 480 440" />
 
-          <!-- ==================== CIDADES E MARCADORES ==================== -->
+          <!-- ==================== CITIES AND LABELS ==================== -->
           
-          <!-- Ponto Porto Alegre - RS -->
-          <g class="city-node" transform="translate(300, 460)">
+          <!-- Porto Alegre - RS (South tip bulge inside Rio Grande do Sul) -->
+          <g class="city-node" transform="translate(390, 530)">
             <circle class="city-pulse" cx="0" cy="0" r="16" />
-            <circle class="city-marker" cx="0" cy="0" r="7.5" />
-            
-            <g transform="translate(0, 16)">
+            <circle class="city-marker" cx="0" cy="0" r="7" />
+            <g transform="translate(-15, 18)">
               <text class="city-label" text-anchor="middle" x="0" y="0">Porto Alegre</text>
               <text class="city-state" text-anchor="middle" x="0" y="11">RS</text>
             </g>
           </g>
 
-          <!-- Ponto São Paulo - SP -->
-          <g class="city-node" transform="translate(480, 380)">
-            <!-- Ondas concêntricas douradas ao pousar -->
+          <!-- São Paulo - SP (Southeast coast inside São Paulo bulge) -->
+          <g class="city-node" transform="translate(480, 440)">
+            <!-- Concentric landing celebration ripples -->
             <circle class="destination-celebration" cx="0" cy="0" r="10" />
             
             <circle class="city-pulse" cx="0" cy="0" r="16" style="animation-delay: 0.8s;" />
-            <circle class="city-marker" cx="0" cy="0" r="7.5" />
+            <circle class="city-marker" cx="0" cy="0" r="7" />
             
-            <g transform="translate(0, -25)">
+            <g transform="translate(45, -8)">
               <text class="city-label" text-anchor="middle" x="0" y="0">São Paulo</text>
               <text class="city-state" text-anchor="middle" x="0" y="11">SP</text>
             </g>
           </g>
         </svg>
 
-        <!-- Avião de Papel (Origami) flutuando no espaço do Mapa -->
+        <!-- Paper Airplane (origami) following path -->
         <div class="paper-airplane-container" id="paper-airplane">
           <svg class="paper-airplane-svg" viewBox="0 0 100 100">
             <defs>
@@ -1303,12 +1119,8 @@
                 <stop offset="100%" stop-color="#f472b6" />
               </linearGradient>
             </defs>
-            <!-- Corpo e Dobras Geometricas do Avião -->
-            <!-- Asa Esquerda Shadowed -->
             <polygon points="50,15 15,72 50,56" fill="url(#plane-shading)" stroke="#f472b6" stroke-width="0.75"/>
-            <!-- Asa Direita Principal -->
             <polygon points="50,15 85,72 50,56" fill="#ffffff" stroke="#f472b6" stroke-width="0.75"/>
-            <!-- Centro e Dobra Interna -->
             <polygon points="50,15 50,56 42,52" fill="#f472b6" opacity="0.8"/>
             <polygon points="50,15 50,56 58,52" fill="#db2777" opacity="0.5"/>
           </svg>
@@ -1318,7 +1130,7 @@
     </div>
 
     <!-- ==========================================
-         4. CELEBRAÇÃO / MODAL FINAL
+         STAGE 4: CELEBRATION MODAL
          ========================================== -->
     <div class="modal-overlay" id="modal-overlay">
       <div class="celebration-modal">
@@ -1342,8 +1154,8 @@
   </div>
 
   <!-- ==========================================================================
-     8. JAVASCRIPT: MÁQUINA DE TIMELINE & SISTEMA DE PARTÍCULAS
-     ========================================================================== -->
+     JAVASCRIPT: TIMELINE MANAGER & PARTICLES
+     ========================================================================== */
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const body = document.body;
@@ -1353,21 +1165,20 @@
       const btnReplay = document.getElementById("btn-replay");
       const particlesContainer = document.getElementById("particles-container");
 
-      // 1. Inicializa o comprimento do trajeto de voo dinamicamente
+      // Set flight trail path length dynamically
       const pathLength = flightTrail.getTotalLength();
       flightTrail.style.strokeDasharray = pathLength;
       flightTrail.style.strokeDashoffset = pathLength;
 
       // ==========================================================================
-      // SISTEMA DE PARTÍCULAS DE FUNDO
+      // PARTICLE ENGINE
       // ==========================================================================
       function createParticle(x, y, isSpecialHeart = false, count = 1) {
         for (let i = 0; i < count; i++) {
           const particle = document.createElement("div");
           particle.className = "particle";
 
-          // Escolhe aleatoriamente entre corações SVG e pequenas estrelas brilhantes
-          const isHeart = isSpecialHeart || Math.random() > 0.4;
+          const isHeart = isSpecialHeart || Math.random() > 0.45;
           const size = isHeart ? (Math.random() * 16 + 12) : (Math.random() * 8 + 6);
           
           particle.style.width = `${size}px`;
@@ -1375,12 +1186,11 @@
 
           if (isHeart) {
             particle.innerHTML = `
-              <svg viewBox="0 0 32 32" style="fill: ${getRandomHeartColor()}; filter: drop-shadow(0 2px 5px rgba(244,63,94,0.25))">
+              <svg viewBox="0 0 32 32" style="fill: ${getRandomHeartColor()}; filter: drop-shadow(0 2px 5px rgba(244,63,94,0.22))">
                 <path d="M16,28.22C15.65,28.22,1.38,15.6,1.05,9.66A8,8,0,0,1,14.65,4.35L16,6.13l1.35-1.78A8,8,0,0,1,30.95,9.66C30.62,15.6,16.35,28.22,16,28.22Z"/>
               </svg>
             `;
           } else {
-            // Estrelas brilhantes
             particle.innerHTML = `
               <svg viewBox="0 0 24 24" style="fill: #fef08a;">
                 <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z"/>
@@ -1388,7 +1198,6 @@
             `;
           }
 
-          // Posicionamento e movimentação física randômica
           const startX = x !== undefined ? x : Math.random() * window.innerWidth;
           const startY = y !== undefined ? y : window.innerHeight + 20;
 
@@ -1403,13 +1212,11 @@
           particle.style.setProperty('--scale', scale);
           particle.style.setProperty('--rot', rot);
 
-          // Variação no tempo de subida
           const duration = 3 + Math.random() * 3;
           particle.style.animationDuration = `${duration}s`;
 
           particlesContainer.appendChild(particle);
 
-          // Remove do DOM após conclusão
           setTimeout(() => {
             particle.remove();
           }, duration * 1000);
@@ -1421,34 +1228,30 @@
         return colors[Math.floor(Math.random() * colors.length)];
       }
 
-      // Spawner constante de fundo (fração de idle)
+      // Spawner interval
       let idleParticleInterval = setInterval(() => {
         if (body.className === "state-initial" || body.className === "state-landed") {
           createParticle(undefined, undefined, false, 1);
         }
-      }, 700);
+      }, 750);
 
       // ==========================================================================
-      // EVENTO DE CLIQUE: ABRIR O ENVELOPE E TIMELINE
+      // CLICK TRIGGER & TIMELINE ANIMATIONS
       // ==========================================================================
       envelopeWrapper.addEventListener("click", () => {
         if (body.className !== "state-initial") return;
 
-        // Desliga a pulsação idle
         envelopeWrapper.classList.remove("idle-pulse");
-
-        // 1. Muda para o estado de abertura (Flap abre, selo explode)
         body.className = "state-opening";
         
-        // Explode partículas de corações a partir do selo
+        // Spawn heart burst from seal center
         const sealRect = envelopeSeal.getBoundingClientRect();
-        createParticle(sealRect.left + 30, sealRect.top + 30, true, 18);
+        createParticle(sealRect.left + 30, sealRect.top + 30, true, 16);
 
-        // 2. Após 0.8s (tempo da aba rotacionar), a carta termina de subir
+        // Transition to reading letter text
         setTimeout(() => {
           body.className = "state-reading";
           
-          // Efeito de pequenos corações contínuos subindo da carta aberta
           let readingHearts = setInterval(() => {
             if (body.className !== "state-reading") {
               clearInterval(readingHearts);
@@ -1465,75 +1268,65 @@
           }, 350);
         }, 800);
 
-        // 3. Permanece visível por 3.8 segundos para leitura emocional, depois inicia a dobra de Origami
+        // Shows clearly for exactly 3.6 seconds, then folds magically into Origami!
         setTimeout(() => {
           body.className = "state-origami";
           
-          // Explode faíscas ao fechar
+          // Emerge a paper origami fold that snaps/morphs
           const envelopeRect = envelopeWrapper.getBoundingClientRect();
           createParticle(
             envelopeRect.left + envelopeRect.width/2, 
             envelopeRect.top + envelopeRect.height/2, 
             false, 
-            12
+            10
           );
 
-          // 4. Após 2.4s (tempo de execução da animação de dobra), revela o mapa e o avião
+          // Once origami animation finishes (2s overall for folds & flight rise), transition to map
           setTimeout(() => {
             body.className = "state-flight-intro";
-            
-            // Desenha a linha de volta à opacidade inicial (zerada)
             flightTrail.style.strokeDashoffset = pathLength;
 
-            // 5. Dá 1.5s para apreciar o mapa antes do voo
+            // Wait 1.5s for map layout overview, then initiate flight!
             setTimeout(() => {
               body.className = "state-flying";
-              
-              // Dispara a animação do trajeto tracejado do voo
               animateTrail(pathLength, 4200);
 
-              // 6. O voo leva 4.2s. Ao terminar, pousa
+              // 4.2s flight trajectory finish
               setTimeout(() => {
                 body.className = "state-landed";
                 
-                // Explode partículas no ponto SP como celebração de pouso perfeito
-                // Posição proporcional a SP no mapa SVG (aprox 480, 380) no viewport real
+                // Explode celebration hearts over São Paulo coords (x=480, y=440)
                 const mapSvg = document.getElementById("map-svg");
                 const svgRect = mapSvg.getBoundingClientRect();
-                
-                // Conversão de coordenadas SVG local para pixel absoluto na janela
                 const spX = svgRect.left + (480 / 800) * svgRect.width;
-                const spY = svgRect.top + (380 / 600) * svgRect.height;
+                const spY = svgRect.top + (440 / 600) * svgRect.height;
                 
                 createParticle(spX, spY, true, 25);
                 
-                // Pequena cascata de amor contínua no modal final
                 let landedCelebration = setInterval(() => {
                   if (body.className !== "state-landed") {
                     clearInterval(landedCelebration);
                     return;
                   }
                   createParticle(Math.random() * window.innerWidth, undefined, true, 1);
-                }, 400);
+                }, 450);
 
               }, 4200);
 
             }, 1500);
 
-          }, 2400);
+          }, 2000); // Morph takes 2s
 
-        }, 4600); // 800ms abertura + 3800ms exibição
+        }, 4400); // 800ms slide-up + 3600ms clear display
       });
 
-      // Função utilitária para animar o trajeto tracejado
+      // Animate flight trail dashed line in exact sync
       function animateTrail(totalLength, duration) {
         const startTime = performance.now();
         
         function step(now) {
           const elapsed = now - startTime;
           const progress = Math.min(elapsed / duration, 1);
-          
-          // Efeito de flexão (ease-in-out) para sincronizar com a velocidade física do avião
           const easeProgress = easeInOutQuad(progress);
           
           flightTrail.style.strokeDashoffset = totalLength * (1 - easeProgress);
@@ -1551,19 +1344,12 @@
       }
 
       // ==========================================================================
-      // EVENTO DE CLIQUE: REINICIAR (REPLAY JORNADA)
+      // REPLAY RESET TRIGGER
       // ==========================================================================
       btnReplay.addEventListener("click", () => {
-        // Corta efeitos e reseta classes
         body.className = "state-initial";
-        
-        // Reinicia a linha guia
         flightTrail.style.strokeDashoffset = pathLength;
-        
-        // Reativa a pulsação idle
         envelopeWrapper.classList.add("idle-pulse");
-        
-        // Explode confetes para indicar o reinício
         createParticle(window.innerWidth / 2, window.innerHeight / 2, false, 20);
       });
     });
