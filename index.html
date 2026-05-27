@@ -1155,7 +1155,7 @@
 
   <!-- ==========================================================================
      JAVASCRIPT: TIMELINE MANAGER & PARTICLES
-     ========================================================================== */
+     ========================================================================== -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const body = document.body;
@@ -1165,10 +1165,20 @@
       const btnReplay = document.getElementById("btn-replay");
       const particlesContainer = document.getElementById("particles-container");
 
-      // Set flight trail path length dynamically
-      const pathLength = flightTrail.getTotalLength();
-      flightTrail.style.strokeDasharray = pathLength;
-      flightTrail.style.strokeDashoffset = pathLength;
+      // Set flight trail path length dynamically and robustly
+      let pathLength = 270;
+      try {
+        if (flightTrail && typeof flightTrail.getTotalLength === 'function') {
+          pathLength = flightTrail.getTotalLength();
+        }
+      } catch (e) {
+        console.warn("Could not calculate flight path length, using fallback.", e);
+      }
+
+      if (flightTrail) {
+        flightTrail.style.strokeDasharray = pathLength;
+        flightTrail.style.strokeDashoffset = pathLength;
+      }
 
       // ==========================================================================
       // PARTICLE ENGINE
