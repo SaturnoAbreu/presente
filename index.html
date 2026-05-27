@@ -254,13 +254,13 @@
       inset: 0;
       background: linear-gradient(to bottom right, #fda4af, #f43f5e);
       border-radius: 12px;
-      z-index: 1;
+      z-index: 1; /* Back wall of the pocket */
     }
 
     .envelope-front-pocket {
       position: absolute;
       inset: 0;
-      z-index: 3;
+      z-index: 10; /* Front wall covers the bottom of the letter */
       pointer-events: none;
     }
 
@@ -288,7 +288,7 @@
       background: linear-gradient(to left, rgba(253, 164, 175, 0.3) 0%, rgba(225, 29, 72, 0.5) 100%);
       clip-path: polygon(100% 0, 100% 100%, 50% 55%);
       border-radius: 0 12px 12px 0;
-      z-index: 3;
+      z-index: 10; /* Front side right */
     }
 
     .envelope-flap {
@@ -301,7 +301,7 @@
       clip-path: polygon(0 0, 50% 100%, 100% 0);
       transform-origin: top center;
       transition: transform 0.8s ease-in-out, z-index 0.3s;
-      z-index: 4;
+      z-index: 12; /* Covers everything on the front when closed */
       border-radius: 12px 12px 0 0;
     }
 
@@ -318,7 +318,7 @@
       justify-content: center;
       align-items: center;
       box-shadow: 0 8px 20px rgba(225, 29, 72, 0.25), inset 0 2px 4px rgba(255,255,255,1);
-      z-index: 5;
+      z-index: 15; /* Top layer */
       cursor: pointer;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
@@ -368,7 +368,8 @@
     body.state-reading .envelope-flap,
     body.state-origami .envelope-flap {
       transform: rotateX(180deg);
-      z-index: 1;
+      z-index: 2; /* Folds backwards behind the letter */
+      transition: transform 0.8s ease-in-out, z-index 0s linear 0.4s; /* delays z-index swap until flap is pointing up */
     }
 
     body.state-opening .envelope-seal,
@@ -389,22 +390,25 @@
     /* THE ELEGANT LETTER (DISTINCT ROSY BACKGROUND) */
     .letter {
       position: absolute;
-      bottom: 12px;
+      bottom: 5px;
       left: 5%;
       width: 90%;
       height: 220px;
-      background-color: #ffe4e6; /* Gorgeous soft pink color, distinct and rosy! */
+      background-color: #ffe4e6; /* Rosy background */
       border-radius: 8px;
       padding: 20px;
-      z-index: 2;
       border: 1px solid #fecdd3;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
       
-      /* BULLETPROOF FIX: Keep the letter completely hidden before clicking! */
+      /* PHYSICAL ACCURACY SLIDE-OUT:
+         1. z-index is set to 5 (behind front pocket flaps which are 10, but in front of back wall which is 1).
+         2. Letter starts deep inside the pocket (translateY(120px)) and is completely invisible.
+         3. When clicked, it slides up out of the pocket.
+      */
+      z-index: 5; 
       opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px) scale(0.95);
-      transition: transform 1.2s cubic-bezier(0.34, 1.35, 0.64, 1), opacity 1.2s ease, visibility 1.2s ease, box-shadow 1.2s ease;
+      transform: translateY(120px) scale(0.9);
+      transition: transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
       
       display: flex;
       flex-direction: column;
@@ -422,14 +426,12 @@
       pointer-events: none;
     }
 
-    /* Slide up and fade in only when clicked */
+    /* Slides up out of the pocket, remaining behind the front flaps! */
     body.state-opening .letter,
     body.state-reading .letter {
-      visibility: visible;
       opacity: 1;
       transform: translateY(-135px) scale(1.05) rotate(-1.5deg);
       box-shadow: var(--card-shadow), 0 15px 40px rgba(225, 29, 72, 0.12);
-      z-index: 5;
     }
 
     .letter-title {
@@ -587,10 +589,10 @@
       letter-spacing: 0.25em;
     }
 
-    /* GEOGRAPHICALLY CORRECT SILHOUETTE OF BRAZIL (MATCHES REFERENCE PICTURE IN DETAIL) */
+    /* GEOGRAPHICALLY CORRECT UNDISTORTED SILHOUETTE OF BRAZIL */
     .brazil-border {
       fill: rgba(255, 255, 255, 0.48);
-      stroke: rgba(244, 114, 182, 0.55); /* Highlighted slightly to pop beautifully */
+      stroke: rgba(244, 114, 182, 0.55); 
       stroke-width: 2.5;
       stroke-linejoin: round;
       stroke-dasharray: 6 3;
@@ -706,16 +708,16 @@
       filter: drop-shadow(0 8px 15px rgba(225, 29, 72, 0.22));
     }
 
-    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=380, y=500) TO SP (x=455, y=430) */
+    /* GEOGRAPHICALLY CORRECT UNDISTORTED FLIGHT POA (x=380, y=500) TO SP (x=465, y=415) */
     body.state-flying .paper-airplane-container {
-      offset-path: path('M 380 500 C 390 320, 440 320, 455 430');
+      offset-path: path('M 380 500 C 390 320, 450 320, 465 415');
       offset-rotate: auto 75deg;
       animation: flight-trajectory 4.2s cubic-bezier(0.4, 0.05, 0.25, 1) forwards;
     }
 
     body.state-landed .paper-airplane-container {
-      left: 455px;
-      top: 430px;
+      left: 465px;
+      top: 415px;
       transform: scale(1.05) translate(-50%, -50%) rotate(25deg);
       animation: plane-hover-landed 3s ease-in-out infinite;
     }
@@ -1020,29 +1022,29 @@
 
           <text class="map-ocean-label" x="530" y="520">OCEANO ATLÂNTICO</text>
 
-          <!-- GEOGRAPHICALLY ACCURATE BRAZIL OUTLINE -->
+          <!-- GEOGRAPHICALLY ACCURATE UNDISTORTED BRAZIL OUTLINE -->
           <path class="brazil-border" filter="url(#shadow)" d="
-            M 380 520
-            C 365 500, 360 480, 345 470
+            M 390 520
+            C 370 500, 360 480, 345 470
             C 330 460, 315 460, 305 440
-            C 295 420, 275 400, 270 370
-            C 265 340, 235 335, 210 330
-            C 185 325, 140 325, 120 300
-            C 105 280, 115 250, 135 240
-            C 145 235, 135 200, 140 180
-            C 150 160, 175 160, 200 160
-            C 220 160, 240 135, 270 110
-            C 290 90, 320 85, 340 100
-            C 350 110, 380 105, 410 95
-            C 430 85, 450 70, 470 85
-            C 490 100, 525 110, 550 115
-            C 575 120, 600 130, 620 145
-            C 640 160, 660 170, 665 190
-            C 670 210, 660 225, 645 240
-            C 630 255, 615 275, 595 305
-            C 575 335, 535 370, 510 400
-            C 485 430, 460 435, 445 460
-            C 430 485, 415 500, 380 520
+            C 295 420, 275 410, 270 380
+            C 265 350, 235 345, 220 340
+            C 205 335, 180 325, 170 300
+            C 160 280, 180 250, 195 240
+            C 205 230, 190 200, 195 180
+            C 200 160, 225 160, 250 160
+            C 270 160, 290 135, 315 110
+            C 330 90, 360 85, 380 100
+            C 390 110, 420 105, 445 95
+            C 465 85, 485 70, 505 85
+            C 525 100, 560 110, 580 115
+            C 605 120, 630 130, 650 145
+            C 670 160, 680 175, 680 195
+            C 680 215, 670 230, 655 245
+            C 640 260, 625 275, 605 305
+            C 585 335, 565 370, 540 400
+            C 515 430, 490 435, 475 460
+            C 460 485, 440 500, 390 520
             C 410 520, 395 510, 380 500 Z
           " />
 
@@ -1065,10 +1067,10 @@
 
           <!-- FLIGHT PATH (TRAJECTORY COMMAND) -->
           <!-- Background guideline path -->
-          <path class="flight-path-bg" d="M 380 500 C 390 320, 440 320, 455 430" />
+          <path class="flight-path-bg" d="M 380 500 C 390 320, 440 320, 465 415" />
           
           <!-- Drawing path activated during flight -->
-          <path id="flight-trail" class="flight-path-active" d="M 380 500 C 390 320, 440 320, 455 430" />
+          <path id="flight-trail" class="flight-path-active" d="M 380 500 C 390 320, 440 320, 465 415" />
 
           <!-- ==================== CITIES AND LABELS ==================== -->
           
@@ -1083,7 +1085,7 @@
           </g>
 
           <!-- São Paulo - SP (Southeast coast inside São Paulo bulge) -->
-          <g class="city-node" transform="translate(455, 430)">
+          <g class="city-node" transform="translate(465, 415)">
             <!-- Concentric landing celebration ripples -->
             <circle class="destination-celebration" cx="0" cy="0" r="10" />
             
@@ -1286,11 +1288,11 @@
               setTimeout(() => {
                 body.className = "state-landed";
                 
-                // Explode celebration hearts over São Paulo coords (x=455, y=430)
+                // Explode celebration hearts over São Paulo coords (x=465, y=415)
                 const mapSvg = document.getElementById("map-svg");
                 const svgRect = mapSvg.getBoundingClientRect();
-                const spX = svgRect.left + (455 / 800) * svgRect.width;
-                const spY = svgRect.top + (430 / 600) * svgRect.height;
+                const spX = svgRect.left + (465 / 800) * svgRect.width;
+                const spY = svgRect.top + (415 / 600) * svgRect.height;
                 
                 createParticle(spX, spY, true, 25);
                 
