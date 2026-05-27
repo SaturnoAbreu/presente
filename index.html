@@ -399,8 +399,13 @@
       z-index: 2;
       border: 1px solid #fecdd3;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-      transform: translateY(0) scale(0.96);
-      transition: transform 1.2s cubic-bezier(0.34, 1.35, 0.64, 1), box-shadow 1.2s ease;
+      
+      /* BULLETPROOF FIX: Keep the letter completely hidden before clicking! */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px) scale(0.95);
+      transition: transform 1.2s cubic-bezier(0.34, 1.35, 0.64, 1), opacity 1.2s ease, visibility 1.2s ease, box-shadow 1.2s ease;
+      
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -417,8 +422,11 @@
       pointer-events: none;
     }
 
+    /* Slide up and fade in only when clicked */
     body.state-opening .letter,
     body.state-reading .letter {
+      visibility: visible;
+      opacity: 1;
       transform: translateY(-135px) scale(1.05) rotate(-1.5deg);
       box-shadow: var(--card-shadow), 0 15px 40px rgba(225, 29, 72, 0.12);
       z-index: 5;
@@ -426,7 +434,7 @@
 
     .letter-title {
       font-family: var(--font-serif);
-      font-size: 1.7rem; /* Styled perfectly to fit the longer daughters text */
+      font-size: 1.7rem;
       font-weight: 800;
       text-align: center;
       background: linear-gradient(135deg, #9f1239 0%, #db2777 50%, #be123c 100%);
@@ -698,16 +706,16 @@
       filter: drop-shadow(0 8px 15px rgba(225, 29, 72, 0.22));
     }
 
-    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=425, y=515) TO SP (x=485, y=425) */
+    /* GEOGRAPHICALLY CORRECT FLIGHT POA (x=380, y=500) TO SP (x=455, y=430) */
     body.state-flying .paper-airplane-container {
-      offset-path: path('M 425 515 C 435 340, 465 340, 485 425');
+      offset-path: path('M 380 500 C 390 320, 440 320, 455 430');
       offset-rotate: auto 75deg;
       animation: flight-trajectory 4.2s cubic-bezier(0.4, 0.05, 0.25, 1) forwards;
     }
 
     body.state-landed .paper-airplane-container {
-      left: 485px;
-      top: 425px;
+      left: 455px;
+      top: 430px;
       transform: scale(1.05) translate(-50%, -50%) rotate(25deg);
       animation: plane-hover-landed 3s ease-in-out infinite;
     }
@@ -1014,14 +1022,14 @@
 
           <!-- GEOGRAPHICALLY ACCURATE BRAZIL OUTLINE -->
           <path class="brazil-border" filter="url(#shadow)" d="
-            M 440 550
-            C 410 520, 390 490, 360 480
-            C 345 470, 320 470, 310 440
-            C 300 420, 275 410, 270 380
-            C 265 350, 230 350, 200 340
-            C 170 330, 130 330, 110 300
-            C 100 280, 120 250, 140 240
-            C 150 230, 130 200, 140 180
+            M 380 520
+            C 365 500, 360 480, 345 470
+            C 330 460, 315 460, 305 440
+            C 295 420, 275 400, 270 370
+            C 265 340, 235 335, 210 330
+            C 185 325, 140 325, 120 300
+            C 105 280, 115 250, 135 240
+            C 145 235, 135 200, 140 180
             C 150 160, 175 160, 200 160
             C 220 160, 240 135, 270 110
             C 290 90, 320 85, 340 100
@@ -1032,9 +1040,10 @@
             C 640 160, 660 170, 665 190
             C 670 210, 660 225, 645 240
             C 630 255, 615 275, 595 305
-            C 575 335, 555 370, 530 400
-            C 505 430, 480 435, 465 460
-            C 450 485, 455 520, 440 550 Z
+            C 575 335, 535 370, 510 400
+            C 485 430, 460 435, 445 460
+            C 430 485, 415 500, 380 520
+            C 410 520, 395 510, 380 500 Z
           " />
 
           <!-- Compass Rose -->
@@ -1056,15 +1065,15 @@
 
           <!-- FLIGHT PATH (TRAJECTORY COMMAND) -->
           <!-- Background guideline path -->
-          <path class="flight-path-bg" d="M 425 515 C 435 340, 465 340, 485 425" />
+          <path class="flight-path-bg" d="M 380 500 C 390 320, 440 320, 455 430" />
           
           <!-- Drawing path activated during flight -->
-          <path id="flight-trail" class="flight-path-active" d="M 425 515 C 435 340, 465 340, 485 425" />
+          <path id="flight-trail" class="flight-path-active" d="M 380 500 C 390 320, 440 320, 455 430" />
 
           <!-- ==================== CITIES AND LABELS ==================== -->
           
           <!-- Porto Alegre - RS (South tip bulge inside Rio Grande do Sul) -->
-          <g class="city-node" transform="translate(425, 515)">
+          <g class="city-node" transform="translate(380, 500)">
             <circle class="city-pulse" cx="0" cy="0" r="16" />
             <circle class="city-marker" cx="0" cy="0" r="7" />
             <g transform="translate(-15, 18)">
@@ -1074,7 +1083,7 @@
           </g>
 
           <!-- São Paulo - SP (Southeast coast inside São Paulo bulge) -->
-          <g class="city-node" transform="translate(485, 425)">
+          <g class="city-node" transform="translate(455, 430)">
             <!-- Concentric landing celebration ripples -->
             <circle class="destination-celebration" cx="0" cy="0" r="10" />
             
@@ -1277,11 +1286,11 @@
               setTimeout(() => {
                 body.className = "state-landed";
                 
-                // Explode celebration hearts over São Paulo coords (x=485, y=425)
+                // Explode celebration hearts over São Paulo coords (x=455, y=430)
                 const mapSvg = document.getElementById("map-svg");
                 const svgRect = mapSvg.getBoundingClientRect();
-                const spX = svgRect.left + (485 / 800) * svgRect.width;
-                const spY = svgRect.top + (425 / 600) * svgRect.height;
+                const spX = svgRect.left + (455 / 800) * svgRect.width;
+                const spY = svgRect.top + (430 / 600) * svgRect.height;
                 
                 createParticle(spX, spY, true, 25);
                 
