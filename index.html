@@ -901,16 +901,20 @@
     }
 
     .flower {
+      position: absolute;
+      bottom: 0;
+      left: var(--flower-left, 50%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      height: 100%;
+      height: var(--flower-height, 100%);
       transform-origin: bottom center;
       animation: sway var(--sway-duration, 5s) ease-in-out infinite alternate;
       animation-delay: var(--sway-delay, 0s);
-      opacity: 0.85;
+      opacity: 0.88;
       filter: drop-shadow(0 6px 15px rgba(225, 29, 72, 0.05));
+      transform: translate(-50%, 0); /* Center relative to left coordinate */
     }
 
     @keyframes sway {
@@ -982,166 +986,614 @@
          STAGE 1: 3D GIFT CARD / ENVELOPE
          ========================================== -->
     <div class="envelope-stage">
-      <!-- Swaying Pastel Flower Field Behind the Envelope Card -->
+            <!-- Swaying Pastel Flower Field Behind the Envelope Card -->
       <div class="flower-field">
-        <!-- 1. Lavender (Back Left) -->
-        <div class="flower flower-tall flower-layer-back" style="--sway-duration: 6.2s; --sway-delay: -1.5s; --sway-angle: 4deg; width: 50px;">
+        <!-- Flower 1 at 1.0% -->
+        <div class="flower flower-layer-back" style="--flower-left: 1.0%; --flower-height: 82%; --sway-duration: 5.20s; --sway-delay: -1.00s; --sway-angle: 3.00deg; width: 40px;">
           <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="stem-grad-1" x1="0" y1="1" x2="0" y2="0">
+              <linearGradient id="lav-stem-0" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#fda4af" stop-opacity="0.3"/>
                 <stop offset="100%" stop-color="#4ade80"/>
               </linearGradient>
-              <linearGradient id="lav-grad" x1="0" y1="1" x2="0" y2="0">
+              <linearGradient id="lav-bud-0" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#c084fc"/>
                 <stop offset="100%" stop-color="#e879f9"/>
               </linearGradient>
             </defs>
-            <path d="M30 260 Q32 150 30 20" fill="none" stroke="url(#stem-grad-1)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 260 Q32 120 30 20" fill="none" stroke="url(#lav-stem-0)" stroke-width="2.5" stroke-linecap="round"/>
             <path d="M30 180 Q10 160 12 140 Q25 155 30 170 Z" fill="#86efac"/>
             <path d="M30 210 Q50 195 48 175 Q35 190 30 200 Z" fill="#86efac"/>
-            <circle cx="30" cy="20" r="6" fill="url(#lav-grad)"/>
-            <circle cx="25" cy="35" r="5" fill="url(#lav-grad)"/>
-            <circle cx="35" cy="35" r="5" fill="url(#lav-grad)"/>
-            <circle cx="23" cy="50" r="5.5" fill="url(#lav-grad)"/>
-            <circle cx="37" cy="50" r="5.5" fill="url(#lav-grad)"/>
-            <circle cx="30" cy="42" r="5" fill="url(#lav-grad)"/>
-            <circle cx="26" cy="65" r="6" fill="url(#lav-grad)"/>
-            <circle cx="34" cy="65" r="6" fill="url(#lav-grad)"/>
-            <circle cx="30" cy="58" r="5" fill="url(#lav-grad)"/>
+            <circle cx="30" cy="20" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="25" cy="35" r="5" fill="url(#lav-bud-0)"/>
+            <circle cx="35" cy="35" r="5" fill="url(#lav-bud-0)"/>
+            <circle cx="23" cy="50" r="5.5" fill="url(#lav-bud-0)"/>
+            <circle cx="37" cy="50" r="5.5" fill="url(#lav-bud-0)"/>
+            <circle cx="30" cy="42" r="5" fill="url(#lav-bud-0)"/>
+            <circle cx="26" cy="65" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="34" cy="65" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="30" cy="58" r="5" fill="url(#lav-bud-0)"/>
+            <circle cx="25" cy="80" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="35" cy="80" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="30" cy="92" r="5" fill="url(#lav-bud-0)"/>
+            <circle cx="27" cy="110" r="6" fill="url(#lav-bud-0)"/>
+            <circle cx="33" cy="110" r="6" fill="url(#lav-bud-0)"/>
           </svg>
         </div>
-
-        <!-- 2. Rosy Tulip (Front Left-Mid) -->
-        <div class="flower flower-medium flower-layer-front" style="--sway-duration: 4.8s; --sway-delay: -0.5s; --sway-angle: 3deg; width: 45px;">
+        <!-- Flower 2 at 5.1% -->
+        <div class="flower flower-layer-front" style="--flower-left: 5.1%; --flower-height: 67%; --sway-duration: 4.15s; --sway-delay: -1.72s; --sway-angle: 4.40deg; width: 43px;">
           <svg viewBox="0 0 50 200" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="stem-grad-2" x1="0" y1="1" x2="0" y2="0">
+              <linearGradient id="tup-stem-1" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.3"/>
                 <stop offset="100%" stop-color="#22c55e"/>
               </linearGradient>
-              <linearGradient id="tup-grad" x1="0" y1="1" x2="0" y2="0">
+              <linearGradient id="tup-head-1" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#db2777"/>
                 <stop offset="50%" stop-color="#f43f5e"/>
                 <stop offset="100%" stop-color="#fca5a5"/>
               </linearGradient>
             </defs>
-            <path d="M25 200 Q23 110 25 35" fill="none" stroke="url(#stem-grad-2)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 200 Q23 100 25 35" fill="none" stroke="url(#tup-stem-1)" stroke-width="2.5" stroke-linecap="round"/>
             <path d="M25 130 Q5 90 8 70 Q18 95 25 110 Z" fill="#4ade80"/>
             <g transform="translate(10, 10)">
-              <path d="M15 25 C5 25, 0 10, 3 0 C10 8, 12 18, 15 25 Z" fill="url(#tup-grad)"/>
-              <path d="M15 25 C25 25, 30 10, 27 0 C20 8, 18 18, 15 25 Z" fill="url(#tup-grad)"/>
+              <path d="M15 25 C5 25, 0 10, 3 0 C10 8, 12 18, 15 25 Z" fill="url(#tup-head-1)"/>
+              <path d="M15 25 C25 25, 30 10, 27 0 C20 8, 18 18, 15 25 Z" fill="url(#tup-head-1)"/>
               <path d="M15 25 C10 20, 8 5, 15 0 C22 5, 20 20, 15 25 Z" fill="#fda4af" opacity="0.95"/>
             </g>
           </svg>
         </div>
-
-        <!-- 3. Pink Daisy (Front Left) -->
-        <div class="flower flower-short flower-layer-front" style="--sway-duration: 3.9s; --sway-delay: -2.2s; --sway-angle: 5deg; width: 40px;">
+        <!-- Flower 3 at 9.2% -->
+        <div class="flower flower-layer-back" style="--flower-left: 9.2%; --flower-height: 96%; --sway-duration: 6.06s; --sway-delay: -2.44s; --sway-angle: 3.60deg; width: 46px;">
           <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="daisy-petals-1" x1="0" y1="0" x2="100%" y2="100%">
+              <linearGradient id="daisy-pet-2" x1="0" y1="0" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#fff1f2"/>
                 <stop offset="100%" stop-color="#fbcfe8"/>
               </linearGradient>
             </defs>
-            <path d="M22 150 Q24 80 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 150 Q24 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
             <path d="M22 95 Q38 80 35 70 Q28 85 22 90 Z" fill="#86efac"/>
             <g transform="translate(22, 25)">
-              <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-petals-1)"/>
-              <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-petals-1)"/>
-              <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-petals-1)"/>
-              <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-petals-1)"/>
+              <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-2)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-2)"/>
+              <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-2)"/>
+              <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-2)"/>
               <g transform="rotate(45)">
-                <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-petals-1)"/>
-                <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-petals-1)"/>
-                <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-petals-1)"/>
-                <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-petals-1)"/>
+                <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-2)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-2)"/>
+                <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-2)"/>
+                <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-2)"/>
               </g>
               <circle cx="0" cy="0" r="5" fill="#fef08a" stroke="#facc15" stroke-width="0.5"/>
             </g>
           </svg>
         </div>
-
-        <!-- 4. Wildflower Purple (Back Mid-Left) -->
-        <div class="flower flower-medium flower-layer-back" style="--sway-duration: 5.8s; --sway-delay: -3.0s; --sway-angle: 4.5deg; width: 40px;">
+        <!-- Flower 4 at 13.2% -->
+        <div class="flower flower-layer-front" style="--flower-left: 13.2%; --flower-height: 64%; --sway-duration: 4.85s; --sway-delay: -3.16s; --sway-angle: 5.20deg; width: 49px;">
           <svg viewBox="0 0 45 200" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="wild-petals-1" x1="0" y1="0" x2="0" y2="1">
+              <linearGradient id="wild-pet-3" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stop-color="#e879f9"/>
                 <stop offset="100%" stop-color="#a855f7"/>
               </linearGradient>
             </defs>
-            <path d="M22 200 Q20 100 22 30" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
-            <circle cx="22" cy="30" r="8" fill="url(#wild-petals-1)"/>
-            <circle cx="14" cy="30" r="6" fill="url(#wild-petals-1)"/>
-            <circle cx="30" cy="30" r="6" fill="url(#wild-petals-1)"/>
-            <circle cx="22" cy="22" r="6" fill="url(#wild-petals-1)"/>
-            <circle cx="22" cy="38" r="6" fill="url(#wild-petals-1)"/>
+            <path d="M22 200 Q20 90 22 30" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="22" cy="30" r="8" fill="url(#wild-pet-3)"/>
+            <circle cx="14" cy="30" r="6" fill="url(#wild-pet-3)"/>
+            <circle cx="30" cy="30" r="6" fill="url(#wild-pet-3)"/>
+            <circle cx="22" cy="22" r="6" fill="url(#wild-pet-3)"/>
+            <circle cx="22" cy="38" r="6" fill="url(#wild-pet-3)"/>
             <circle cx="22" cy="30" r="4.5" fill="#fef08a"/>
           </svg>
         </div>
-
-        <!-- 5. Tall Deep Rose (Front Center-Right) -->
-        <div class="flower flower-tall flower-layer-front" style="--sway-duration: 5.5s; --sway-delay: -1.0s; --sway-angle: 3.5deg; width: 50px;">
+        <!-- Flower 5 at 17.3% -->
+        <div class="flower flower-layer-back" style="--flower-left: 17.3%; --flower-height: 91%; --sway-duration: 6.92s; --sway-delay: -3.88s; --sway-angle: 4.20deg; width: 52px;">
           <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="rose-grad-1" x1="0" y1="1" x2="1" y2="0">
+              <linearGradient id="rose-head-4" x1="0" y1="1" x2="1" y2="0">
                 <stop offset="0%" stop-color="#be123c"/>
                 <stop offset="50%" stop-color="#f43f5e"/>
                 <stop offset="100%" stop-color="#fb7185"/>
               </linearGradient>
             </defs>
-            <path d="M30 260 Q28 120 30 35" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 260 Q28 110 30 35" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
             <path d="M30 150 Q50 130 48 115 Q35 130 30 140 Z" fill="#15803d"/>
             <path d="M30 110 Q12 95 14 80 Q25 95 30 102 Z" fill="#15803d"/>
             <g transform="translate(30, 35)">
-              <path d="M-15,-5 C-25,10, 25,10, 15,-5 C25,-20, -25,-20, -15,-5 Z" fill="url(#rose-grad-1)"/>
+              <path d="M-15,-5 C-25,10, 25,10, 15,-5 C25,-20, -25,-20, -15,-5 Z" fill="url(#rose-head-4)"/>
               <ellipse cx="0" cy="-6" rx="9" ry="11" fill="#e11d48"/>
               <path d="M-6,-9 C-3,-15, 3,-15, 6,-9 C3,-6, -3,-6, -6,-9 Z" fill="#fda4af" opacity="0.9"/>
             </g>
           </svg>
         </div>
-
-        <!-- 6. Golden Daisy (Front Right-Mid) -->
-        <div class="flower flower-short flower-layer-front" style="--sway-duration: 4.2s; --sway-delay: -1.8s; --sway-angle: 5deg; width: 40px;">
+        <!-- Flower 6 at 21.4% -->
+        <div class="flower flower-layer-front" style="--flower-left: 21.4%; --flower-height: 61%; --sway-duration: 5.55s; --sway-delay: -1.60s; --sway-angle: 4.20deg; width: 40px;">
           <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
             <defs>
-              <linearGradient id="gold-petals-1" x1="0" y1="0" x2="1" y2="1">
+              <linearGradient id="daisy-gold-5" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0%" stop-color="#fef08a"/>
                 <stop offset="100%" stop-color="#facc15"/>
               </linearGradient>
             </defs>
-            <path d="M22 150 Q21 80 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 150 Q21 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
             <g transform="translate(22, 25)">
-              <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#gold-petals-1)"/>
-              <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#gold-petals-1)"/>
-              <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#gold-petals-1)"/>
-              <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#gold-petals-1)"/>
+              <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-5)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-5)"/>
+              <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-5)"/>
+              <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-5)"/>
               <g transform="rotate(45)">
-                <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#gold-petals-1)"/>
-                <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#gold-petals-1)"/>
-                <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#gold-petals-1)"/>
-                <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#gold-petals-1)"/>
+                <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-5)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-5)"/>
+                <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-5)"/>
+                <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-5)"/>
               </g>
               <circle cx="0" cy="0" r="5" fill="#f97316"/>
             </g>
           </svg>
         </div>
-
-        <!-- 7. Lavender (Back Right) -->
-        <div class="flower flower-tall flower-layer-back" style="--sway-duration: 6.5s; --sway-delay: -0.8s; --sway-angle: 3.5deg; width: 50px;">
+        <!-- Flower 7 at 25.5% -->
+        <div class="flower flower-layer-back" style="--flower-left: 25.5%; --flower-height: 86%; --sway-duration: 5.68s; --sway-delay: -2.32s; --sway-angle: 3.30deg; width: 43px;">
           <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
-            <path d="M30 260 Q32 150 30 20" fill="none" stroke="url(#stem-grad-1)" stroke-width="2.5" stroke-linecap="round"/>
-            <circle cx="30" cy="20" r="6" fill="url(#lav-grad)"/>
-            <circle cx="25" cy="35" r="5" fill="url(#lav-grad)"/>
-            <circle cx="35" cy="35" r="5" fill="url(#lav-grad)"/>
-            <circle cx="23" cy="50" r="5.5" fill="url(#lav-grad)"/>
-            <circle cx="37" cy="50" r="5.5" fill="url(#lav-grad)"/>
-            <circle cx="30" cy="42" r="5" fill="url(#lav-grad)"/>
-            <circle cx="26" cy="65" r="6" fill="url(#lav-grad)"/>
-            <circle cx="34" cy="65" r="6" fill="url(#lav-grad)"/>
-            <circle cx="30" cy="58" r="5" fill="url(#lav-grad)"/>
+            <defs>
+              <linearGradient id="lav-stem-6" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fda4af" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4ade80"/>
+              </linearGradient>
+              <linearGradient id="lav-bud-6" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c084fc"/>
+                <stop offset="100%" stop-color="#e879f9"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q32 120 30 20" fill="none" stroke="url(#lav-stem-6)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 180 Q10 160 12 140 Q25 155 30 170 Z" fill="#86efac"/>
+            <path d="M30 210 Q50 195 48 175 Q35 190 30 200 Z" fill="#86efac"/>
+            <circle cx="30" cy="20" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="25" cy="35" r="5" fill="url(#lav-bud-6)"/>
+            <circle cx="35" cy="35" r="5" fill="url(#lav-bud-6)"/>
+            <circle cx="23" cy="50" r="5.5" fill="url(#lav-bud-6)"/>
+            <circle cx="37" cy="50" r="5.5" fill="url(#lav-bud-6)"/>
+            <circle cx="30" cy="42" r="5" fill="url(#lav-bud-6)"/>
+            <circle cx="26" cy="65" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="34" cy="65" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="30" cy="58" r="5" fill="url(#lav-bud-6)"/>
+            <circle cx="25" cy="80" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="35" cy="80" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="30" cy="92" r="5" fill="url(#lav-bud-6)"/>
+            <circle cx="27" cy="110" r="6" fill="url(#lav-bud-6)"/>
+            <circle cx="33" cy="110" r="6" fill="url(#lav-bud-6)"/>
+          </svg>
+        </div>
+        <!-- Flower 8 at 29.6% -->
+        <div class="flower flower-layer-front" style="--flower-left: 29.6%; --flower-height: 58%; --sway-duration: 4.45s; --sway-delay: -3.04s; --sway-angle: 5.00deg; width: 46px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-pet-7" x1="0" y1="0" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff1f2"/>
+                <stop offset="100%" stop-color="#fbcfe8"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q24 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 95 Q38 80 35 70 Q28 85 22 90 Z" fill="#86efac"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-7)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-7)"/>
+              <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-7)"/>
+              <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-7)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-7)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-7)"/>
+                <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-7)"/>
+                <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-7)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#fef08a" stroke="#facc15" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 9 at 33.7% -->
+        <div class="flower flower-layer-back" style="--flower-left: 33.7%; --flower-height: 100%; --sway-duration: 6.54s; --sway-delay: -3.76s; --sway-angle: 3.90deg; width: 49px;">
+          <svg viewBox="0 0 50 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="tup-stem-8" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#22c55e"/>
+              </linearGradient>
+              <linearGradient id="tup-head-8" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#db2777"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fca5a5"/>
+              </linearGradient>
+            </defs>
+            <path d="M25 200 Q23 100 25 35" fill="none" stroke="url(#tup-stem-8)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 130 Q5 90 8 70 Q18 95 25 110 Z" fill="#4ade80"/>
+            <g transform="translate(10, 10)">
+              <path d="M15 25 C5 25, 0 10, 3 0 C10 8, 12 18, 15 25 Z" fill="url(#tup-head-8)"/>
+              <path d="M15 25 C25 25, 30 10, 27 0 C20 8, 18 18, 15 25 Z" fill="url(#tup-head-8)"/>
+              <path d="M15 25 C10 20, 8 5, 15 0 C22 5, 20 20, 15 25 Z" fill="#fda4af" opacity="0.95"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 10 at 37.8% -->
+        <div class="flower flower-layer-front" style="--flower-left: 37.8%; --flower-height: 76%; --sway-duration: 5.15s; --sway-delay: -1.48s; --sway-angle: 4.00deg; width: 52px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="rose-head-9" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#be123c"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fb7185"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q28 110 30 35" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 150 Q50 130 48 115 Q35 130 30 140 Z" fill="#15803d"/>
+            <path d="M30 110 Q12 95 14 80 Q25 95 30 102 Z" fill="#15803d"/>
+            <g transform="translate(30, 35)">
+              <path d="M-15,-5 C-25,10, 25,10, 15,-5 C25,-20, -25,-20, -15,-5 Z" fill="url(#rose-head-9)"/>
+              <ellipse cx="0" cy="-6" rx="9" ry="11" fill="#e11d48"/>
+              <path d="M-6,-9 C-3,-15, 3,-15, 6,-9 C3,-6, -3,-6, -6,-9 Z" fill="#fda4af" opacity="0.9"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 11 at 41.8% -->
+        <div class="flower flower-layer-back" style="--flower-left: 41.8%; --flower-height: 95%; --sway-duration: 5.30s; --sway-delay: -2.20s; --sway-angle: 3.00deg; width: 40px;">
+          <svg viewBox="0 0 45 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="wild-pet-10" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e879f9"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 200 Q20 90 22 30" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="22" cy="30" r="8" fill="url(#wild-pet-10)"/>
+            <circle cx="14" cy="30" r="6" fill="url(#wild-pet-10)"/>
+            <circle cx="30" cy="30" r="6" fill="url(#wild-pet-10)"/>
+            <circle cx="22" cy="22" r="6" fill="url(#wild-pet-10)"/>
+            <circle cx="22" cy="38" r="6" fill="url(#wild-pet-10)"/>
+            <circle cx="22" cy="30" r="4.5" fill="#fef08a"/>
+          </svg>
+        </div>
+        <!-- Flower 12 at 45.9% -->
+        <div class="flower flower-layer-front" style="--flower-left: 45.9%; --flower-height: 73%; --sway-duration: 4.05s; --sway-delay: -2.92s; --sway-angle: 4.80deg; width: 43px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-gold-11" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="100%" stop-color="#facc15"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q21 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-11)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-11)"/>
+              <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-11)"/>
+              <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-11)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-11)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-11)"/>
+                <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-11)"/>
+                <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-11)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#f97316"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 13 at 50.0% -->
+        <div class="flower flower-layer-back" style="--flower-left: 50.0%; --flower-height: 90%; --sway-duration: 6.16s; --sway-delay: -3.64s; --sway-angle: 3.60deg; width: 46px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="lav-stem-12" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fda4af" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4ade80"/>
+              </linearGradient>
+              <linearGradient id="lav-bud-12" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c084fc"/>
+                <stop offset="100%" stop-color="#e879f9"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q32 120 30 20" fill="none" stroke="url(#lav-stem-12)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 180 Q10 160 12 140 Q25 155 30 170 Z" fill="#86efac"/>
+            <path d="M30 210 Q50 195 48 175 Q35 190 30 200 Z" fill="#86efac"/>
+            <circle cx="30" cy="20" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="25" cy="35" r="5" fill="url(#lav-bud-12)"/>
+            <circle cx="35" cy="35" r="5" fill="url(#lav-bud-12)"/>
+            <circle cx="23" cy="50" r="5.5" fill="url(#lav-bud-12)"/>
+            <circle cx="37" cy="50" r="5.5" fill="url(#lav-bud-12)"/>
+            <circle cx="30" cy="42" r="5" fill="url(#lav-bud-12)"/>
+            <circle cx="26" cy="65" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="34" cy="65" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="30" cy="58" r="5" fill="url(#lav-bud-12)"/>
+            <circle cx="25" cy="80" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="35" cy="80" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="30" cy="92" r="5" fill="url(#lav-bud-12)"/>
+            <circle cx="27" cy="110" r="6" fill="url(#lav-bud-12)"/>
+            <circle cx="33" cy="110" r="6" fill="url(#lav-bud-12)"/>
+          </svg>
+        </div>
+        <!-- Flower 14 at 54.1% -->
+        <div class="flower flower-layer-front" style="--flower-left: 54.1%; --flower-height: 70%; --sway-duration: 4.75s; --sway-delay: -1.36s; --sway-angle: 5.60deg; width: 49px;">
+          <svg viewBox="0 0 50 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="tup-stem-13" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#22c55e"/>
+              </linearGradient>
+              <linearGradient id="tup-head-13" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#db2777"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fca5a5"/>
+              </linearGradient>
+            </defs>
+            <path d="M25 200 Q23 100 25 35" fill="none" stroke="url(#tup-stem-13)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 130 Q5 90 8 70 Q18 95 25 110 Z" fill="#4ade80"/>
+            <g transform="translate(10, 10)">
+              <path d="M15 25 C5 25, 0 10, 3 0 C10 8, 12 18, 15 25 Z" fill="url(#tup-head-13)"/>
+              <path d="M15 25 C25 25, 30 10, 27 0 C20 8, 18 18, 15 25 Z" fill="url(#tup-head-13)"/>
+              <path d="M15 25 C10 20, 8 5, 15 0 C22 5, 20 20, 15 25 Z" fill="#fda4af" opacity="0.95"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 15 at 58.2% -->
+        <div class="flower flower-layer-back" style="--flower-left: 58.2%; --flower-height: 85%; --sway-duration: 7.02s; --sway-delay: -2.08s; --sway-angle: 4.20deg; width: 52px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-pet-14" x1="0" y1="0" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff1f2"/>
+                <stop offset="100%" stop-color="#fbcfe8"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q24 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 95 Q38 80 35 70 Q28 85 22 90 Z" fill="#86efac"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-14)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-14)"/>
+              <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-14)"/>
+              <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-14)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-14)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-14)"/>
+                <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-14)"/>
+                <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-14)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#fef08a" stroke="#facc15" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 16 at 62.2% -->
+        <div class="flower flower-layer-front" style="--flower-left: 62.2%; --flower-height: 67%; --sway-duration: 5.45s; --sway-delay: -2.80s; --sway-angle: 4.60deg; width: 40px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="rose-head-15" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#be123c"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fb7185"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q28 110 30 35" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 150 Q50 130 48 115 Q35 130 30 140 Z" fill="#15803d"/>
+            <path d="M30 110 Q12 95 14 80 Q25 95 30 102 Z" fill="#15803d"/>
+            <g transform="translate(30, 35)">
+              <path d="M-15,-5 C-25,10, 25,10, 15,-5 C25,-20, -25,-20, -15,-5 Z" fill="url(#rose-head-15)"/>
+              <ellipse cx="0" cy="-6" rx="9" ry="11" fill="#e11d48"/>
+              <path d="M-6,-9 C-3,-15, 3,-15, 6,-9 C3,-6, -3,-6, -6,-9 Z" fill="#fda4af" opacity="0.9"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 17 at 66.3% -->
+        <div class="flower flower-layer-back" style="--flower-left: 66.3%; --flower-height: 99%; --sway-duration: 5.78s; --sway-delay: -3.52s; --sway-angle: 3.30deg; width: 43px;">
+          <svg viewBox="0 0 45 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="wild-pet-16" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e879f9"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 200 Q20 90 22 30" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="22" cy="30" r="8" fill="url(#wild-pet-16)"/>
+            <circle cx="14" cy="30" r="6" fill="url(#wild-pet-16)"/>
+            <circle cx="30" cy="30" r="6" fill="url(#wild-pet-16)"/>
+            <circle cx="22" cy="22" r="6" fill="url(#wild-pet-16)"/>
+            <circle cx="22" cy="38" r="6" fill="url(#wild-pet-16)"/>
+            <circle cx="22" cy="30" r="4.5" fill="#fef08a"/>
+          </svg>
+        </div>
+        <!-- Flower 18 at 70.4% -->
+        <div class="flower flower-layer-front" style="--flower-left: 70.4%; --flower-height: 64%; --sway-duration: 4.35s; --sway-delay: -1.24s; --sway-angle: 5.40deg; width: 46px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-gold-17" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="100%" stop-color="#facc15"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q21 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-17)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-17)"/>
+              <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-17)"/>
+              <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-17)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-17)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-17)"/>
+                <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-17)"/>
+                <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-17)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#f97316"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 19 at 74.5% -->
+        <div class="flower flower-layer-back" style="--flower-left: 74.5%; --flower-height: 94%; --sway-duration: 6.64s; --sway-delay: -1.96s; --sway-angle: 3.90deg; width: 49px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="lav-stem-18" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fda4af" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4ade80"/>
+              </linearGradient>
+              <linearGradient id="lav-bud-18" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c084fc"/>
+                <stop offset="100%" stop-color="#e879f9"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q32 120 30 20" fill="none" stroke="url(#lav-stem-18)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 180 Q10 160 12 140 Q25 155 30 170 Z" fill="#86efac"/>
+            <path d="M30 210 Q50 195 48 175 Q35 190 30 200 Z" fill="#86efac"/>
+            <circle cx="30" cy="20" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="25" cy="35" r="5" fill="url(#lav-bud-18)"/>
+            <circle cx="35" cy="35" r="5" fill="url(#lav-bud-18)"/>
+            <circle cx="23" cy="50" r="5.5" fill="url(#lav-bud-18)"/>
+            <circle cx="37" cy="50" r="5.5" fill="url(#lav-bud-18)"/>
+            <circle cx="30" cy="42" r="5" fill="url(#lav-bud-18)"/>
+            <circle cx="26" cy="65" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="34" cy="65" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="30" cy="58" r="5" fill="url(#lav-bud-18)"/>
+            <circle cx="25" cy="80" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="35" cy="80" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="30" cy="92" r="5" fill="url(#lav-bud-18)"/>
+            <circle cx="27" cy="110" r="6" fill="url(#lav-bud-18)"/>
+            <circle cx="33" cy="110" r="6" fill="url(#lav-bud-18)"/>
+          </svg>
+        </div>
+        <!-- Flower 20 at 78.6% -->
+        <div class="flower flower-layer-front" style="--flower-left: 78.6%; --flower-height: 61%; --sway-duration: 5.05s; --sway-delay: -2.68s; --sway-angle: 4.40deg; width: 52px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-pet-19" x1="0" y1="0" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff1f2"/>
+                <stop offset="100%" stop-color="#fbcfe8"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q24 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <path d="M22 95 Q38 80 35 70 Q28 85 22 90 Z" fill="#86efac"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-19)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-19)"/>
+              <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-19)"/>
+              <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-19)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="12" fill="url(#daisy-pet-19)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="12" fill="url(#daisy-pet-19)"/>
+                <ellipse cx="-12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-19)"/>
+                <ellipse cx="12" cy="0" rx="12" ry="4" fill="url(#daisy-pet-19)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#fef08a" stroke="#facc15" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 21 at 82.7% -->
+        <div class="flower flower-layer-back" style="--flower-left: 82.7%; --flower-height: 89%; --sway-duration: 5.40s; --sway-delay: -3.40s; --sway-angle: 3.00deg; width: 40px;">
+          <svg viewBox="0 0 50 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="tup-stem-20" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fbcfe8" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#22c55e"/>
+              </linearGradient>
+              <linearGradient id="tup-head-20" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#db2777"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fca5a5"/>
+              </linearGradient>
+            </defs>
+            <path d="M25 200 Q23 100 25 35" fill="none" stroke="url(#tup-stem-20)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 130 Q5 90 8 70 Q18 95 25 110 Z" fill="#4ade80"/>
+            <g transform="translate(10, 10)">
+              <path d="M15 25 C5 25, 0 10, 3 0 C10 8, 12 18, 15 25 Z" fill="url(#tup-head-20)"/>
+              <path d="M15 25 C25 25, 30 10, 27 0 C20 8, 18 18, 15 25 Z" fill="url(#tup-head-20)"/>
+              <path d="M15 25 C10 20, 8 5, 15 0 C22 5, 20 20, 15 25 Z" fill="#fda4af" opacity="0.95"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 22 at 86.8% -->
+        <div class="flower flower-layer-front" style="--flower-left: 86.8%; --flower-height: 58%; --sway-duration: 3.95s; --sway-delay: -1.12s; --sway-angle: 5.20deg; width: 43px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="rose-head-21" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#be123c"/>
+                <stop offset="50%" stop-color="#f43f5e"/>
+                <stop offset="100%" stop-color="#fb7185"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q28 110 30 35" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 150 Q50 130 48 115 Q35 130 30 140 Z" fill="#15803d"/>
+            <path d="M30 110 Q12 95 14 80 Q25 95 30 102 Z" fill="#15803d"/>
+            <g transform="translate(30, 35)">
+              <path d="M-15,-5 C-25,10, 25,10, 15,-5 C25,-20, -25,-20, -15,-5 Z" fill="url(#rose-head-21)"/>
+              <ellipse cx="0" cy="-6" rx="9" ry="11" fill="#e11d48"/>
+              <path d="M-6,-9 C-3,-15, 3,-15, 6,-9 C3,-6, -3,-6, -6,-9 Z" fill="#fda4af" opacity="0.9"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 23 at 90.8% -->
+        <div class="flower flower-layer-back" style="--flower-left: 90.8%; --flower-height: 84%; --sway-duration: 6.26s; --sway-delay: -1.84s; --sway-angle: 3.60deg; width: 46px;">
+          <svg viewBox="0 0 45 200" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="wild-pet-22" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#e879f9"/>
+                <stop offset="100%" stop-color="#a855f7"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 200 Q20 90 22 30" fill="none" stroke="#86efac" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="22" cy="30" r="8" fill="url(#wild-pet-22)"/>
+            <circle cx="14" cy="30" r="6" fill="url(#wild-pet-22)"/>
+            <circle cx="30" cy="30" r="6" fill="url(#wild-pet-22)"/>
+            <circle cx="22" cy="22" r="6" fill="url(#wild-pet-22)"/>
+            <circle cx="22" cy="38" r="6" fill="url(#wild-pet-22)"/>
+            <circle cx="22" cy="30" r="4.5" fill="#fef08a"/>
+          </svg>
+        </div>
+        <!-- Flower 24 at 94.9% -->
+        <div class="flower flower-layer-front" style="--flower-left: 94.9%; --flower-height: 76%; --sway-duration: 4.65s; --sway-delay: -2.56s; --sway-angle: 4.20deg; width: 49px;">
+          <svg viewBox="0 0 45 150" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="daisy-gold-23" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#fef08a"/>
+                <stop offset="100%" stop-color="#facc15"/>
+              </linearGradient>
+            </defs>
+            <path d="M22 150 Q21 75 22 25" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+            <g transform="translate(22, 25)">
+              <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-23)"/>
+              <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-23)"/>
+              <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-23)"/>
+              <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-23)"/>
+              <g transform="rotate(45)">
+                <ellipse cx="0" cy="-12" rx="4" ry="11" fill="url(#daisy-gold-23)"/>
+                <ellipse cx="0" cy="12" rx="4" ry="11" fill="url(#daisy-gold-23)"/>
+                <ellipse cx="-12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-23)"/>
+                <ellipse cx="12" cy="0" rx="11" ry="4" fill="url(#daisy-gold-23)"/>
+              </g>
+              <circle cx="0" cy="0" r="5" fill="#f97316"/>
+            </g>
+          </svg>
+        </div>
+        <!-- Flower 25 at 99.0% -->
+        <div class="flower flower-layer-back" style="--flower-left: 99.0%; --flower-height: 98%; --sway-duration: 7.12s; --sway-delay: -3.28s; --sway-angle: 4.20deg; width: 52px;">
+          <svg viewBox="0 0 60 260" style="width: 100%; height: 100%;">
+            <defs>
+              <linearGradient id="lav-stem-24" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#fda4af" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#4ade80"/>
+              </linearGradient>
+              <linearGradient id="lav-bud-24" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c084fc"/>
+                <stop offset="100%" stop-color="#e879f9"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 260 Q32 120 30 20" fill="none" stroke="url(#lav-stem-24)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M30 180 Q10 160 12 140 Q25 155 30 170 Z" fill="#86efac"/>
+            <path d="M30 210 Q50 195 48 175 Q35 190 30 200 Z" fill="#86efac"/>
+            <circle cx="30" cy="20" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="25" cy="35" r="5" fill="url(#lav-bud-24)"/>
+            <circle cx="35" cy="35" r="5" fill="url(#lav-bud-24)"/>
+            <circle cx="23" cy="50" r="5.5" fill="url(#lav-bud-24)"/>
+            <circle cx="37" cy="50" r="5.5" fill="url(#lav-bud-24)"/>
+            <circle cx="30" cy="42" r="5" fill="url(#lav-bud-24)"/>
+            <circle cx="26" cy="65" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="34" cy="65" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="30" cy="58" r="5" fill="url(#lav-bud-24)"/>
+            <circle cx="25" cy="80" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="35" cy="80" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="30" cy="92" r="5" fill="url(#lav-bud-24)"/>
+            <circle cx="27" cy="110" r="6" fill="url(#lav-bud-24)"/>
+            <circle cx="33" cy="110" r="6" fill="url(#lav-bud-24)"/>
           </svg>
         </div>
       </div>
