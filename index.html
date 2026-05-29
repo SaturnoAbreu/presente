@@ -775,10 +775,10 @@
     .celebration-modal {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      max-width: 320px; /* Slim and cute size */
+      max-width: 380px; /* Aumentado para acomodar o bilhete */
       width: 100%;
       border-radius: 24px;
-      padding: 35px 30px;
+      padding: 30px 24px;
       text-align: center;
       box-shadow: 0 30px 80px rgba(225, 29, 72, 0.12), inset 0 2px 2px rgba(255,255,255,0.6);
       transform: translateY(30px) scale(0.92);
@@ -787,7 +787,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 25px; /* Spacing between heart and button */
+      gap: 20px; /* Espaçamento ajustado */
     }
 
     body.state-landed .celebration-modal {
@@ -825,6 +825,257 @@
 
     @keyframes spin-clockwise {
       100% { transform: rotate(360deg); }
+    }
+
+    /* PASSAGEM DE AVIÃO (BOARDING PASS - TIPO LATAM) */
+    .modal-header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      border-bottom: 1.5px solid rgba(225, 29, 72, 0.08);
+      padding-bottom: 8px;
+      margin-bottom: 4px;
+    }
+
+    .modal-nav-title {
+      font-family: var(--font-title);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1e293b;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+      transition: color 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      color: var(--pink-dark);
+    }
+
+    .modal-flight-sub {
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1e1b4b; /* Navy blue */
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    .boarding-pass {
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(225, 29, 72, 0.15);
+      border-radius: 18px;
+      width: 100%;
+      box-shadow: 0 15px 35px rgba(225, 29, 72, 0.06);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      font-family: var(--font-body);
+      color: var(--text-main);
+    }
+    
+    .ticket-header-flight {
+      background: #f8fafc;
+      padding: 10px 16px;
+      border-bottom: 1.5px solid rgba(225, 29, 72, 0.08);
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #334155;
+    }
+
+    .ticket-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ticket-route-grid {
+      display: grid;
+      grid-template-columns: 1fr 60px 1fr;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .route-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .route-label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .flight-icon-small {
+      width: 14px;
+      height: 14px;
+      fill: var(--text-muted);
+    }
+
+    .route-date {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .route-time-code {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .time-bold {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #1e1b4b; /* Navy */
+    }
+
+    .airport-code-label {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #64748b;
+    }
+
+    .route-city {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .route-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 100%;
+    }
+
+    .connector-line {
+      position: absolute;
+      width: 100%;
+      height: 1.5px;
+      border-top: 1.5px dashed rgba(225, 29, 72, 0.15);
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .connector-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: 1px solid rgba(225, 29, 72, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .plane-icon-connector {
+      width: 11px;
+      height: 11px;
+      fill: var(--text-muted);
+      transform: rotate(90deg);
+    }
+
+    .ticket-meta-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      border-top: 1px solid rgba(225, 29, 72, 0.08);
+      padding-top: 12px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 2px;
+    }
+
+    .operator-value {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .latam-logo-svg {
+      fill: var(--pink-dark);
+    }
+
+    .meta-value-duration {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .ticket-action-seats {
+      margin-top: 4px;
+      width: 100%;
+    }
+
+    .btn-ticket-seats {
+      width: 100%;
+      padding: 10px 0;
+      border-radius: 24px;
+      border: 1.5px solid var(--pink-primary);
+      color: var(--pink-dark);
+      background: transparent;
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.03);
+    }
+
+    .btn-ticket-seats:hover {
+      background: var(--pink-light);
+      border-color: var(--pink-dark);
+      transform: translateY(-1.5px);
+      box-shadow: 0 6px 15px rgba(225, 29, 72, 0.08);
+    }
+
+    .btn-ticket-seats:active {
+      transform: translateY(0.5px);
+    }
+
+    .btn-ticket-seats.seat-selected {
+      background: var(--pink-light);
+      border-color: var(--pink-dark);
+      color: var(--pink-dark);
+      cursor: default;
+      pointer-events: none;
+      box-shadow: none;
     }
 
     .btn-replay {
@@ -877,7 +1128,7 @@
       body.state-reading .letter { transform: translate3d(0, -120px, 2px) scale(1.05) rotate(-1.5deg); }
       
       .map-wrapper { height: auto; }
-      .celebration-modal { padding: 28px 20px; max-width: 280px; }
+      .celebration-modal { padding: 24px 18px; max-width: 320px; }
     }
 
     /* ==========================================================================
@@ -1777,11 +2028,98 @@
     </div>
 
     <!-- ==========================================
-         STAGE 4: CELEBRATION MODAL (MINIMALIST HEART & BUTTON ONLY)
+         STAGE 4: CELEBRATION MODAL (WITH BOARDING PASS)
          ========================================== -->
     <div class="modal-overlay" id="modal-overlay">
       <div class="celebration-modal">
-        <div class="modal-heart-seal">❤️</div>
+        <!-- Modal Header Nav -->
+        <div class="modal-header-nav">
+          <span class="modal-nav-title">Detalhe do voo</span>
+          <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+        </div>
+        
+        <!-- Flight Route Subtitle -->
+        <h3 class="modal-flight-sub">Porto Alegre a São Paulo</h3>
+        
+        <!-- Passagem de Avião Personalizada (Estilo LATAM) -->
+        <div class="boarding-pass">
+          <div class="ticket-header-flight">
+            <strong>LA3219</strong>
+          </div>
+          <div class="ticket-body">
+            <div class="ticket-route-grid">
+              <!-- Partida -->
+              <div class="route-column">
+                <div class="route-label">
+                  <svg class="flight-icon-small" viewBox="0 0 24 24">
+                    <path d="M2.5 19h19v2h-19zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.4-1.39.37 3.99 6.27-3.9 1.05-2.22-1.63-.92.25 1.83 3.23 15.09-4.04c.8-.22 1.28-1.05 1.06-1.85z"/>
+                  </svg>
+                  <span>Partida</span>
+                </div>
+                <span class="route-date">Ter. 4 ago. 2026</span>
+                <div class="route-time-code">
+                  <span class="time-bold">17:50</span>
+                  <span class="airport-code-label">POA</span>
+                </div>
+                <span class="route-city">Porto Alegre</span>
+              </div>
+              
+              <!-- Center Connector -->
+              <div class="route-connector">
+                <div class="connector-line"></div>
+                <div class="connector-badge">
+                  <svg class="plane-icon-connector" viewBox="0 0 24 24">
+                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L14 19v-5.5l8 2.5z"/>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Chegada -->
+              <div class="route-column" style="text-align: right;">
+                <div class="route-label" style="justify-content: flex-end;">
+                  <svg class="flight-icon-small" viewBox="0 0 24 24">
+                    <path d="M19 15.5c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-12-6L14 3l1.5 1.5L11.8 9H18c1.1 0 2 .9 2 2v2H4v-2c0-1.1.9-2 2-2h1zm-4 6h18v2H3v-2z"/>
+                  </svg>
+                  <span>Chegada</span>
+                </div>
+                <span class="route-date">Ter. 4 ago. 2026</span>
+                <div class="route-time-code" style="justify-content: flex-end;">
+                  <span class="time-bold">19:35</span>
+                  <span class="airport-code-label">GRU</span>
+                </div>
+                <span class="route-city">São Paulo</span>
+              </div>
+            </div>
+            
+            <!-- Metadata (Operado por / Duração) -->
+            <div class="ticket-meta-info">
+              <div class="meta-item">
+                <span class="meta-label">Operador por</span>
+                <div class="operator-value">
+                  <!-- Custom LATAM Logo Mark approximation in SVG -->
+                  <svg class="latam-logo-svg" viewBox="0 0 24 24" width="18" height="18" style="fill: var(--pink-dark);">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                  </svg>
+                  <span>LATAM Airlines Brasil</span>
+                </div>
+              </div>
+              <div class="meta-item" style="text-align: right;">
+                <span class="meta-label">Duração</span>
+                <span class="meta-value-duration">1h 45m</span>
+              </div>
+            </div>
+            
+            <!-- Ver Assentos Button inside Card -->
+            <div class="ticket-action-seats">
+              <button class="btn-ticket-seats" id="btn-ticket-seats">Ver assentos</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coração pulsante do design anterior -->
+        <div class="modal-heart-seal" style="margin-top: 5px;">❤️</div>
+
+        <!-- Botão de replay -->
         <button class="btn-replay" id="btn-replay">
           Reviver esta Jornada
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -2025,10 +2363,47 @@
       }
 
       // ==========================================================================
+      // INTERACTIVE MODAL ACTIONS (CLOSE & SEATS)
+      // ==========================================================================
+      const modalOverlay = document.getElementById("modal-overlay");
+      const modalCloseBtn = document.getElementById("modal-close-btn");
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener("click", () => {
+          modalOverlay.style.opacity = "0";
+          modalOverlay.style.pointerEvents = "none";
+        });
+      }
+
+      const btnSeats = document.getElementById("btn-ticket-seats");
+      if (btnSeats) {
+        btnSeats.addEventListener("click", () => {
+          if (btnSeats.classList.contains("seat-selected")) return;
+          
+          btnSeats.classList.add("seat-selected");
+          btnSeats.innerHTML = "Assento 01A (Reservado com Amor) ❤️";
+          
+          // Burst particles over the button
+          const rect = btnSeats.getBoundingClientRect();
+          createParticle(rect.left + rect.width / 2, rect.top + rect.height / 2, true, 15);
+        });
+      }
+
+      // ==========================================================================
       // REPLAY RESET TRIGGER
       // ==========================================================================
       btnReplay.addEventListener("click", () => {
         body.className = "state-initial";
+        
+        // Reset overlay custom styles if closed manually
+        modalOverlay.style.opacity = "";
+        modalOverlay.style.pointerEvents = "";
+        
+        // Reset seat selection button inside card
+        if (btnSeats) {
+          btnSeats.classList.remove("seat-selected");
+          btnSeats.innerHTML = "Ver assentos";
+        }
+        
         flightTrail.style.strokeDashoffset = pathLength;
         const plane = document.getElementById("paper-airplane");
         if (plane) {
